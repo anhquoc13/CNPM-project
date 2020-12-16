@@ -34,7 +34,7 @@ namespace Infrastructure.Persistence
             }
             if (!string.IsNullOrEmpty(searchString))
             {
-                query = query.Where(m => m.role.Contains(searchString));
+                query = query.Where(m => m.ID.Contains(searchString));
             }
 
             SortUser(sortOrder, ref query);

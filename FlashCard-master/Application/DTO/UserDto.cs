@@ -5,6 +5,7 @@ namespace Application.DTO
 {
     public class UserDto : EntityBase
     {
+        [Key]
         [StringLength(30, MinimumLength = 5)]
         [Required]
         public string ID { get; set; }
