@@ -16,5 +16,15 @@ namespace Infrastructure.Persistence
         }
 
         public DbSet<User> User { get; set; }
+        public DbSet<Class> Class { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<DetailFolder> DetailFolder { get; set; }
+        public DbSet<Folder> Folder { get; set; }
+        public DbSet<GroupFolder> GroupFolder { get; set; }
+        public DbSet<ListVocalbulary> ListVocalbulary { get; set; }
+        public DbSet<MemberOF> MemberOF { get; set; }
+        public DbSet<TestOFCourse> TestOFCourse { get; set; }
+        public DbSet<TestOfFolder> TestOfFolder { get; set; }
+        public DbSet<Vocalbulary> Vocalbulary { get; set; }
     }
 }

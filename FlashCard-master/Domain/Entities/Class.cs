@@ -1,9 +1,11 @@
 using Domain.Entities.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
     public class Class : EntityBase, IAggregateRoot
     {
+        [Key]
         public int ID { get; set; }
         public string IDuser { get; set; }
         public string name { get; set; }
