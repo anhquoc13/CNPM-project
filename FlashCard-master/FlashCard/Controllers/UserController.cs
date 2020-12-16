@@ -52,31 +52,22 @@ namespace LearningWeb.Controllers
             {
                 return RedirectToAction("Index", "Intro");
             }
+            model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
+            ViewData["Page.Title"]=model.user.ID;
+            ViewData["Page.Target"]="Hồ sơ";
             if (ModelState.IsValid)
             {
-                model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
-                ViewData["Page.Title"]=model.user.ID;
-                ViewData["Page.Target"]="Hồ sơ";
-                if (_userManager.UserExists(model.id))
-                {
-                    ModelState.AddModelError(string.Empty, "Tài khoản đã tồn tại");
-                    return View(model);
-                }
                 if (model.Password != model.ConfirmPassword)
                 {
+                    model.edit = _userManager.GetBy(id, User.Identity.Name);
                     ModelState.AddModelError(string.Empty, "Mật khẩu không khớp");
                     return View(model);
                 }
                 User userToUpdate = new User();
-                userToUpdate = model.edit;
-                userToUpdate.Id = model.id;
                 userToUpdate.ID = model.id;
                 userToUpdate.tagname = model.Tagname;
                 userToUpdate.email = model.Email;
-                if (model.Password != null)
-                {
-                    userToUpdate.passwd = model.Password;
-                }
+                userToUpdate.passwd = model.Password;
                 if (model.userRole == "Quản trị viên" || model.userRole == "Thành viên")
                 {
                     userToUpdate.role = model.userRole;
@@ -88,6 +79,11 @@ namespace LearningWeb.Controllers
                 else userToUpdate.status = 0;
                 _userManager.UpdateUser(userToUpdate);
                 return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
+                model.edit = _userManager.GetBy(id, User.Identity.Name); 
             }
             return View(model);  
         }

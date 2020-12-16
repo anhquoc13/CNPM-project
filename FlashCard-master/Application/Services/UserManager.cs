@@ -124,7 +124,11 @@ namespace Application.Services
                 userToChange.status = 0;
                 userToChange.disableDay = System.DateTime.Today.ToString("dd-MM-yyyy");
             }
-            else userToChange.status = 1;
+            else 
+            {
+                userToChange.status = 1;
+                userToChange.disableDay = null;
+            }
             _userRepository.Update(userToChange);
         }
     }

@@ -43,7 +43,7 @@
     <meta name="msapplication-TileImage" content="~/resources/icon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body>
+<body style="background-color: #1572E8;">
     <!-- Navbar-->
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light py-3">
@@ -51,7 +51,7 @@
             <!-- Navbar Brand -->
             <a asp-action="Index" asp-controller="Intro" class="logo" style="text-decoration: none;">
                 <img src="~/resources/icon/favicon-96x96.png" width="25%" height="auto" style="margin-top: -5px; margin-right: -1px;" alt="navbar brand" class="navbar-brand">
-                <b class="navbar-name text-dark text-uppercase">	
+                <b class="navbar-name text-white text-uppercase">	
                     flashcard
                 </b>
             </a>
@@ -65,8 +65,8 @@
         <!-- For Demo Purpose -->
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
-            <h1>Đăng Nhập</h1><br>
-            <p class="text-muted mb-0">Tham gia những lớp học thú vị với mọi người</p>
+            <h1 class="text-white">Đăng Nhập</h1><br>
+            <p class="text-white op-1 mb-0">Tham gia những lớp học thú vị với mọi người</p>
         </div>
 
         <!-- Registeration Form -->
@@ -86,7 +86,7 @@
                     </div>
 
                     <!-- Password -->
-                    <span asp-validation-for="Password" class="text-danger ml-4"></span>
+                    <span asp-validation-for="Password" class="ml-4" style="color: #FF6666;"></span>
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -99,16 +99,17 @@
                     <div class="custom-control custom-checkbox mb-4 ml-3">
                         <input asp-for="RememberMe" type="checkbox" class="custom-control-input" id="signupCheck">
                         <label class="custom-control-label" for="signupCheck" style="font-size: 1em;">
-                            <span>Lưu đăng nhập ?</span>
+                            <span class="text-white">Lưu đăng nhập ?</span>
                         </label>
                     </div>
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mb-4">
-                        <button type="submit" class="btn btn-primary btn-block">
+                        <button type="submit" class="btn btn-success btn-block" style="background-color: #00CC66;">
                             <span class="font-weight-bold">Đăng nhập</span>
                         </button>
                     </div>
+                    <h5 class="ml-2 text-white">Bạn là người mới ? <a asp-action="Register" style="color: #66FF66;"><b>Đăng ký ngay</b></a></h5>
             </form>
         </div>
     </div>

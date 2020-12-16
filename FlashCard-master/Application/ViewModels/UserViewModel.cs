@@ -18,8 +18,10 @@ namespace Application.ViewModels
         [Required(ErrorMessage = "Mật khẩu không được phép để trống")]
         [RegularExpression(@".{5,}", ErrorMessage = "Mật khẩu ít nhất 5 ký tự")]
         public string Password { get; set; }
+        [Required(ErrorMessage = "Nhập lại mật khẩu không được phép để trống")]
         [RegularExpression(@".{5,}", ErrorMessage = "Mật khẩu ít nhất 5 ký tự")]
         public string ConfirmPassword { get; set; }
+        public string contry { get; set; }
         public User user { get; set; }
         public User edit { get; set; }
         public UserDto owner { get; set; }
@@ -27,5 +29,6 @@ namespace Application.ViewModels
         public string userRole { get; set; }
         [Required(ErrorMessage = "Nhập tình trạng!")]
         public string userStatus { get; set; }
+
     }
 }

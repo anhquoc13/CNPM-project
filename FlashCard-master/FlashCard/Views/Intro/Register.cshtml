@@ -43,7 +43,7 @@
     <meta name="msapplication-TileImage" content="~/resources/icon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body>
+<body style="background-color: #1572E8;">
     <!-- Navbar-->
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light py-3">
@@ -51,7 +51,7 @@
             <!-- Navbar Brand -->
             <a asp-action="Index" asp-controller="Intro" class="logo" style="text-decoration: none;">
                 <img src="~/resources/icon/favicon-96x96.png" width="25%" height="auto" style="margin-top: -5px; margin-right: -1px;" alt="navbar brand" class="navbar-brand">
-                <b class="navbar-name text-dark text-uppercase">	
+                <b class="navbar-name text-white text-uppercase">	
                     flashcard
                 </b>
             </a>
@@ -65,8 +65,8 @@
         <!-- For Demo Purpose -->
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
-            <h1>Tham gia ngay</h1><br>
-            <p class="text-muted mb-0">Trải nghiệm môi trường học tập cực kỳ năng động</p>
+            <h1 class="text-white">Tham gia ngay</h1><br>
+            <p class="text-white mb-0">Trải nghiệm môi trường học tập cực kỳ năng động</p>
         </div>
 
         <!-- Registeration Form -->
@@ -74,8 +74,8 @@
             <form asp-action="Register" asp-controller="Intro" method="POST">
                     <div asp-validation-summary="ModelOnly" class="text-danger mb-4 ml-4"></div>
                     <!-- Username -->
-                    <h3><b>Thông tin</b></h3>
-                    <span asp-validation-for="id" class="text-danger ml-4"></span>
+                    <h3 class="text-white"><b>Thông tin</b></h3>
+                    <span asp-validation-for="id" class="ml-4" style="color: #FF6666;"></span>
                     <div class="input-group col-lg-12 mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -86,7 +86,7 @@
                     </div>
 
                     <!-- Tagname -->
-                    <span asp-validation-for="Tagname" class="text-danger ml-4"></span>
+                    <span asp-validation-for="Tagname" class="ml-4" style="color: #FF6666;"></span>
                     <div class="input-group col-lg-12 mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -97,7 +97,7 @@
                     </div>
 
                     <!-- Email -->
-                    <span asp-validation-for="Email" class="text-danger ml-4"></span>
+                    <span asp-validation-for="Email" class="ml-4" style="color: #FF6666;"></span>
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -107,9 +107,9 @@
                         <input asp-for="Email" id="Email" type="text" name="Email" placeholder="Email" class="form-control bg-white border-left-0 border-md">
                     </div>
 
-                    <h3><b>Bảo mật</b></h3>
+                    <h3 class="text-white"><b>Bảo mật</b></h3>
                     <!-- Password -->
-                    <span asp-validation-for="Password" class="text-danger ml-4"></span>
+                    <span asp-validation-for="Password" class="ml-4" style="color: #FF6666;"></span>
                     <div class="input-group col-lg-12 mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -120,7 +120,7 @@
                     </div>
 
                     <!-- Confirm Password -->
-                    <span asp-validation-for="ConfirmPassword" class="text-danger ml-4"></span>
+                    <span asp-validation-for="ConfirmPassword" class="ml-4" style="color: #FF6666;"></span>
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -132,10 +132,11 @@
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mb-4">
-                        <button type="submit" value="Register" class="btn btn-primary btn-block">
+                        <button type="submit" value="Register" class="btn btn-primary btn-block" style="background-color: #00CC66;">
                             <span class="font-weight-bold">Đăng ký</span>
                         </button>
                     </div>
+                    <h5 class="ml-2 text-white">Bạn đã có tài khoản rồi ?<a asp-action="Login" style="color: #66FF66;"><b>Đăng nhập ngay</b></a></h5>
             </form>
         </div>
     </div>

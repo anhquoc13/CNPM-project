@@ -62,11 +62,11 @@ namespace LearningWeb.Controllers
             {
                 return RedirectToAction("Index", "Intro");
             }
+            model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
+            ViewData["Page.Title"]="Tạo tài khoản - Admin";
+            ViewData["Page.Target"]="Tạo tài khoản";
             if (ModelState.IsValid)
             {
-                model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
-                ViewData["Page.Title"]="Tạo tài khoản - Admin";
-                ViewData["Page.Target"]="Tạo tài khoản";
                 if (_userManager.UserExists(model.id))
                 {
                     ModelState.AddModelError(string.Empty, "Tài khoản đã tồn tại");

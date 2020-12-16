@@ -234,6 +234,14 @@
 										</div>
 									</li>
 									<li>
+										@if (@Model.user.role == "Quản trị viên")
+										{
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" asp-controller="Admin" asp-action="Index">
+												<i class="fas fa-tasks"></i>&emsp;
+												Quản trị hệ thống
+											</a>
+										}
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" asp-controller="User" asp-action="Edit">
 											<i class="fas fa-sliders-h"></i>&emsp;
