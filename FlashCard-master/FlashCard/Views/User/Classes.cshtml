@@ -1,0 +1,67 @@
+﻿@model Application.ViewModels.UserViewModel 
+
+<!-- Page Header  -->
+<div class="panel-header bg-white">
+    <div class="page-inner">
+        @await Html.PartialAsync("~/Views/Shared/_ownerLayout.cshtml")
+    </div>
+</div>
+
+<!-- Page Content  -->
+<div class="page-inner">
+    <div class="page-category">
+        <div class="col-md-12">
+            <!-- Class 1 -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div class="card-category">
+                        <b class="text-black">@ViewData["Class.ID1.setID.Count"] học phần</b>
+                        &emsp;|&emsp;
+                        <b class="text-black">@ViewData["Class.ID1.userID.Count"] thành viên</b>
+                        &emsp;|&emsp;
+                        @ViewData["Class.ID1.School"]
+                    </div>
+                    <i class="far fa-user card-title"></i>&emsp;
+                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Class.ID1.Name"]</b>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Class 2 -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div class="card-category">
+                        <b class="text-black">@ViewData["Class.ID2.setID.Count"] học phần</b>
+                        &emsp;|&emsp;
+                        <b class="text-black">@ViewData["Class.ID2.userID.Count"] thành viên</b>
+                        &emsp;|&emsp;
+                        @ViewData["Class.ID2.School"]
+                    </div>
+                    <i class="far fa-user card-title"></i>&emsp;
+                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Class.ID2.Name"]</b>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Class 3 -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div class="card-category">
+                        <b class="text-black">@ViewData["Class.ID3.setID.Count"] học phần</b>
+                        &emsp;|&emsp;
+                        <b class="text-black">@ViewData["Class.ID3.userID.Count"] thành viên</b>
+                        &emsp;|&emsp;
+                        @ViewData["Class.ID3.School"]
+                    </div>
+                    <i class="far fa-user card-title"></i>&emsp;
+                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Class.ID3.Name"]</b>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

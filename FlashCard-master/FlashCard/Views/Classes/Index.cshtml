@@ -1,0 +1,450 @@
+<!-- Page Header  -->
+<div class="panel-header bg-white">
+    <div class="page-inner">
+        <div class="row item-info-header">
+            <!-- Class Info -->
+            <div class="col-8">
+                <br>         
+                <div class="item-info-header-title">
+                    <i class="far fa-user"></i>
+                    <b>@ViewData["Class.Name"]</b>
+                </div>
+            </div>
+            
+            <!-- Right Menu -->
+            <div class="col-3 ml-auto mr-3">
+                <!-- Add Set Button -->
+                <button type="button" class="btn btn-icon btn-round btn-secondary" rel="tooltip" data-toggle="modal" data-placement="top" 
+                    title="Thêm học phần" data-target="#addSetToFolderModal">
+                    <i class="fas fa-plus"></i>
+                </button>&ensp;
+
+                <!-- Add Member Button -->
+                <button type="button" class="btn btn-icon btn-round btn-secondary" rel="tooltip" data-toggle="modal" data-placement="top" 
+                    title="Thêm thành viên" data-target="#addMemberModal">
+                    <i class="fas fa-user-plus"></i>
+                </button>&ensp;
+
+                <!-- Add Folder Button -->
+                <button type="button" class="btn btn-icon btn-round btn-secondary" rel="tooltip" data-toggle="modal" data-placement="top" 
+                    title="Thêm thư mục" data-target="#addFolderToClassModal">
+                    <i class="fas fa-folder"></i>
+                </button>&ensp;
+
+                <!-- More Button -->
+                <span class="dropdown">
+                    <button type="button" class="btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#createClassModal">
+                            <i class="fas fa-pen"></i>&ensp;
+                            Sửa
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-bell"></i>&ensp;
+                            Thông báo
+                        </a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#reportClassModal">
+                            <i class="fas fa-exclamation-triangle"></i>&ensp;
+                            Báo cáo
+                        </a>
+                        <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#removeClassModal">
+                            <i class="fas fa-trash"></i>&ensp;
+                            Xóa
+                        </a>
+                        <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#removeAllMemberModal">
+                            <i class="fas fa-trash"></i>&ensp;
+                            Xóa mọi thành viên
+                        </a>
+                    </div>
+                </span>
+
+                <!-- Action toggle switch -->
+                <div class="float-left mt-3">
+                    <h3><b>Bật thao tác</b></h3>
+                    <label class="btn-switch">
+                        <input type="checkbox" onclick="showActionBtn(7)">
+                        <span></span>
+                    </label>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Page Content  -->
+<div class="page-inner" >
+    <div class="page-category">
+        <div class="row">
+            <div class="col-7 tabs">
+                <input type="radio" id="tab1" name="tab-control" checked>
+                <input type="radio" id="tab2" name="tab-control">
+                <input type="radio" id="tab3" name="tab-control">
+                <ul>
+                    <li><label for="tab1" role="button"><br><h3>
+                        Học phần
+                    </h3></label></li>
+                    <li><label for="tab2" role="button"><br><h3>
+                        Thành viên
+                    </h3></label></li>
+                    <li><label for="tab3" role="button"><br><h3>
+                        Xếp hạng
+                    </h3></label></li>
+                </ul>
+                <div class="slider"><div class="indicator"></div></div>
+                <div class="content">
+                    <!-- Tab 1 -->
+                    <div class="tab-page">
+                        <!-- Set 1 -->
+                        <div class="card cardHoverLine card-stats card-round">
+                            <div class="card-body">
+                                <div id="btn-action1" class="btn-action">
+                                    <button type="button" class="float-right btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-pen"></i>&ensp;
+                                            Sửa
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            Xóa khỏi lớp
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-category">
+                                    <b class="text-black">@ViewData["Class.setID1.Count"] thuật ngữ</b>
+                                    &emsp;|&emsp;
+                                    <div class="avatar avatar-xs">
+                                        <img src="@ViewData["Class.setID1.OwnerID.Avatar"]" alt="owner avatar" class="avatar-img rounded-circle">
+                                    </div>
+                                    <a href="" class="text-success">@ViewData["Class.setID1.OwnerID.Username"]</a>
+                                    &emsp;|&emsp;
+                                    <b class="text-muted">@ViewData["Class.Name"]</b>
+                                </div>
+                                <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
+                                    <b>@ViewData["Class.SetID1.Name"]</b>
+                                </a>&emsp;
+                                <i class="card-category far fa-image"></i>
+                                <i class="card-category fas fa-lock"></i>
+                            </div>
+                        </div>
+
+                        <!-- Set 2 -->
+                        <div class="card cardHoverLine card-stats card-round">
+                            <div class="card-body">
+                                <div id="btn-action2" class="btn-action">
+                                    <button type="button" class="float-right btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-pen"></i>&ensp;
+                                            Sửa
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            Xóa khỏi lớp
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-category">
+                                    <b class="text-black">@ViewData["Class.setID2.Count"] thuật ngữ</b>
+                                    &emsp;|&emsp;
+                                    <div class="avatar avatar-xs">
+                                        <img src="@ViewData["Class.setID2.OwnerID.Avatar"]" alt="owner avatar" class="avatar-img rounded-circle">
+                                    </div>
+                                    <a href="" class="text-success">@ViewData["Class.setID2.OwnerID.Username"]</a>
+                                    &emsp;|&emsp;
+                                    <b class="text-muted">@ViewData["Class.Name"]</b>
+                                </div>
+                                <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
+                                    <b>@ViewData["Class.SetID2.Name"]</b>
+                                </a>&emsp;
+                                <i class="card-category far fa-image"></i>
+                                <i class="card-category fas fa-lock"></i>
+                            </div>
+                        </div>
+
+                        <!-- Folder 1 -->
+                        <div class="card cardHoverLine card-stats card-round">
+                            <div class="card-body">
+                                <div id="btn-action3" class="btn-action">
+                                    <button type="button" class="float-right btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-pen"></i>&ensp;
+                                            Sửa
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            Xóa khỏi lớp
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-category">@ViewData["Class.FolderID1.Count"] học phần</div>
+                                <i class="far fa-folder card-title"></i>&emsp;
+                                <a href="" class="card-title text-uppercase" style="text-decoration: none;">
+                                    <b>@ViewData["Class.FolderID1.Name"]</b>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- tab 2 -->
+                    <div class="tab-page">
+                        <div class="card full-height bg-white">
+                            <div class="card-body">
+                                <h1>Chia sẻ liên kết này với mọi người</h1><br>
+                                <h4 class="text-muted">Bất kỳ ai có URL đều có thể đăng ký và tự động tham gia lớp</h4><br>
+                                <div class="input-group mb-5" >
+                                    <input type="text" value="@ViewData["Class.Link"]" class="form-control">&ensp;
+                                    <button class="btn btn-secondary" style="display: inline-block;">Chép liên kết</button>
+                                </div>
+                            </div>
+                        </div><br>
+                        
+                        <h3><b>Thành viên</b><hr style="float: right; width: 27vw; border-bottom: 1px solid gray;"/></h3>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Tìm thành viên...">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- member 1 -->
+                        <div class="card cardHoverLine card-stats card-round">
+                            <div class="card-body">
+                                <div id="btn-action4" class="btn-action">
+                                    <button type="button" class="float-right btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-user-shield"></i>
+                                            Xóa quyền quản trị viên
+                                        </a><a class="dropdown-item" href="#">
+                                            <i class="fas fa-share"></i>
+                                            Yêu cầu
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            Xóa khỏi lớp
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="align-items-left align-items-md-center flex-column flex-md-row col-6">
+                                    <div class="row">
+                                        <div class="avatar mt-1">
+                                            <img src="@ViewData["Class.Member1.Avatar"]" alt="Owner Avatar" class="avatar-img rounded-circle">
+                                        </div>
+                                        <div class="col mt-1" style="font-size: 1.3em;">
+                                            <div class="text-danger">@ViewData["Class.Member1.Role"]</div>
+                                            <a href="">@ViewData["Class.Member1.Name"]</a>   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- member 2 -->
+                        <div class="card cardHoverLine card-stats card-round">
+                            <div class="card-body">
+                                <div id="btn-action5" class="btn-action">
+                                    <button type="button" class="float-right btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-user-shield"></i>
+                                            Đưa làm quản trị viên
+                                        </a><a class="dropdown-item" href="#">
+                                            <i class="fas fa-share"></i>
+                                            Yêu cầu
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            Xóa khỏi lớp
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="align-items-left align-items-md-center flex-column flex-md-row col-6">
+                                    <div class="row">
+                                        <div class="avatar mt-1">
+                                            <img src="@ViewData["Class.Member2.Avatar"]" alt="Owner Avatar" class="avatar-img rounded-circle">
+                                        </div>
+                                        <div class="col mt-1" style="font-size: 1.3em;">
+                                            <div class="text-muted">@ViewData["Class.Member2.Role"]</div>
+                                            <a href="">@ViewData["Class.Member2.Name"]</a>   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- member 3 -->
+                        <div class="card cardHoverLine card-stats card-round">
+                            <div class="card-body">
+                                <div id="btn-action6" class="btn-action">
+                                    <button type="button" class="float-right btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-user-shield"></i>
+                                            Đưa làm quản trị viên
+                                        </a><a class="dropdown-item" href="#">
+                                            <i class="fas fa-share"></i>
+                                            Yêu cầu
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            Xóa khỏi lớp
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="align-items-left align-items-md-center flex-column flex-md-row col-6">
+                                    <div class="row">
+                                        <div class="avatar  mt-1">
+                                            <img src="@ViewData["Class.Member3.Avatar"]" alt="Owner Avatar" class="avatar-img rounded-circle">
+                                        </div>
+                                        <div class="col  mt-1" style="font-size: 1.3em;">
+                                            <div class="text-muted">@ViewData["Class.Member3.Role"]</div>
+                                            <a href="">@ViewData["Class.Member3.Name"]</a>   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- member 4 -->
+                        <div class="card cardHoverLine card-stats card-round">
+                            <div class="card-body">
+                                <div id="btn-action7" class="btn-action">
+                                    <button type="button" class="float-right btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-user-shield"></i>
+                                            Đưa làm quản trị viên
+                                        </a><a class="dropdown-item" href="#">
+                                            <i class="fas fa-share"></i>
+                                            Yêu cầu
+                                        </a>
+                                        <a class="dropdown-item text-danger" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            Xóa khỏi lớp
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="align-items-left align-items-md-center flex-column flex-md-row col-6">
+                                    <div class="row">
+                                        <div class="avatar">
+                                            <img src="@ViewData["Class.Member4.Avatar"]" alt="Owner Avatar" class="avatar-img rounded-circle">
+                                        </div>
+                                        <div class="col mt-1" style="font-size: 1.3em;">
+                                            <div class="text-muted">@ViewData["Class.Member4.Role"]</div>
+                                            <a href="">@ViewData["Class.Member4.Name"]</a>   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- tab 3 -->
+                    <div class="tab-page">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Tìm thành viên...">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                                <table class="table table-head-bg-primary mt-4 bg-white">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Thành viên</th>
+                                            <th scope="col">Điểm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><i class="fas fa-trophy" style="color: #ffd700;"></i></td>
+                                            <td>
+                                                <div class="avatar avatar-xs"><img src="@ViewData["Class.Member1.Avatar"]" alt="owner avatar" class="avatar-img rounded-circle"></div>
+                                                <a href="" class="text-success"> @ViewData["Class.Member1.Name"]</a>
+                                            </td>
+                                            <td class="text-success">10</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-medal" style="color: #C0C0C0;"></i></td>
+                                            <td>
+                                                <div class="avatar avatar-xs"><img src="@ViewData["Class.Member2.Avatar"]" alt="owner avatar" class="avatar-img rounded-circle"></div>
+                                                <a href="" class="text-dark"> @ViewData["Class.Member2.Name"]</a>
+                                            </td>
+                                            <td>7.8</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fas fa-award" style="color: #cd7f32;"></i></td>
+                                            <td>
+                                                <div class="avatar avatar-xs"><img src="@ViewData["Class.Member3.Avatar"]" alt="owner avatar" class="avatar-img rounded-circle"></div>
+                                                <a href="" class="text-warning"> @ViewData["Class.Member3.Name"]</a>
+                                            </td>
+                                            <td class="text-warning">5.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>
+                                                <div class="avatar avatar-xs"><img src="@ViewData["Class.Member4.Avatar"]" alt="owner avatar" class="avatar-img rounded-circle"></div>
+                                                <a href="" class="text-danger"> @ViewData["Class.Member4.Name"]</a>
+                                            </td>
+                                            <td class="text-danger">0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Right Class Info -->
+            <div class="col-4 menu-right">
+                <h3>LIÊN KẾT MỜI</h3>
+                <div class="input-group">
+                    <input type="text" value="@ViewData["Class.Link"]" class="form-control">&ensp;
+                    <button class="btn btn-secondary" style="display: inline-block;">Sao chép</button>
+                </div><br>
+
+                <h3>Chi tiết lớp học</h3>
+                <h4><i class="fas fa-building text-muted op-3"></i><span>@ViewData["Class.School"]</span></h4>
+                <h4><i class="fas fa-clone text-muted op-3"></i><span>@ViewData["Class.SetCount"] học phần</span></h4>
+                <h4><i class="fas fa-user text-muted op-3"></i><span>@ViewData["Class.MemberCount"] thành viên</span></h4>
+                <h4><i class="fas fa-info-circle text-muted op-3"></i><span>@ViewData["Class.Describe"]</span></h4>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Shared/Modal/_addSetToFolderModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_addMemberModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_addFolderToClassModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_createClassModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_reportClassModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_removeClassModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_removeAllMemberModal.cshtml")

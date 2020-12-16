@@ -1,0 +1,276 @@
+<div class="page-inner">
+    <!-- Page Url  -->
+    <div class="page-header">
+        <h4 class="page-title">@ViewData["Page.Target"]</h4> <!-- Page Target Big -->
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                Trang
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">@ViewData["Page.Target"]</a> <!-- Page Target Small -->
+            </li>
+        </ul>
+    </div>
+
+    <!-- Page Content  -->
+	<div class="page-category">
+        <!-- Set Title  -->
+        <h1><b>@ViewData["Page.Title"]</b></h1>
+
+        <br>
+
+        <div class="row" style="margin-bottom: 120px;">
+            <!-- Set FlashCards Menu  -->
+            <div class="col-3">
+                <h5 class="text-muted ml-4">
+                    <b>Học</b>
+                </h5>
+
+                <a href="#" class="btn button _btnleft">
+                    <img src="resources\images\svg_icons\card.svg" class="svg-setmenu">&emsp;
+                    Thẻ ghi nhớ
+                </a><br>
+                
+                <a href="#" class="btn button _btnleft">
+                    <img src="resources\images\svg_icons\play.svg" class="svg-setmenu">&emsp;
+                    Học
+                </a><br>
+
+                <a href="#" class="btn button _btnleft">
+                    <img src="resources\images\svg_icons\writing.svg" class="svg-setmenu">&emsp;
+                    Viết
+                </a><br>
+
+                <a href="#" class="btn button _btnleft">
+                    <img src="resources\images\svg_icons\book.svg" class="svg-setmenu">&emsp;
+                    Kiểm tra
+                </a><br>
+            </div>
+
+            <!-- Learning Card -->
+            <div class="col-6">
+                <div class="project">
+                    <div class="noselect">
+                        <!-- Card 1  -->
+                        <div class="slides cardContainer inactivecard">
+                            <div class="cardfc">
+                                <div class="side front">
+                                    <div class="info">
+                                        <b>@ViewData["Set.Card1.Term"]</b>
+                                    </div>
+                                </div>
+                                <div class="side back">
+                                    <div class="info">
+                                        <b>@ViewData["Set.Card1.Definition"]</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2  -->
+                        <div class="slides cardContainer inactivecard">
+                            <div class="cardfc">
+                                <div class="side front">
+                                    <div class="info">
+                                        <b>@ViewData["Set.Card2.Term"]</b>
+                                    </div>
+                                </div>
+                                <div class="side back">
+                                    <div class="info">
+                                        <b>@ViewData["Set.Card2.Definition"]</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 3  -->
+                        <div class="slides cardContainer inactivecard">
+                            <div class="cardfc">
+                                <div class="side front">
+                                    <div class="info">
+                                        <b>@ViewData["Set.Card3.Term"]</b>
+                                    </div>
+                                </div>
+                                <div class="side back">
+                                    <div class="info">
+                                        <b>@ViewData["Set.Card3.Definition"]</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Card Control  -->
+                    <div class="slideControl" style="font-size: 1.5em">
+                        <!-- Prev Card Button -->
+                        <div class="prev" onclick="plusDivs(-1)">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                        &emsp;&emsp;
+
+                        <!-- Card Counter -->
+                        <b class="pagination"></b>
+                        &emsp;&emsp;
+
+                        <!-- Next Card Button -->
+                        <div class="next" onclick="plusDivs(1)">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row col-12">
+            <!-- Set Owner -->
+            <div class="row">
+                <div class="avatar mt-2">
+                    <img src="@ViewData["Set.Owner.Avatar"]" alt="Owner Avatar" class="avatar-img rounded-circle">
+                </div>
+                <div class="col" style="width: 300px; font-size: 1.5em;">
+                    <div class="text-muted">Tạo bởi</div>
+                    <a href="">@ViewData["Set.Owner.Username"]</a>   
+                </div>
+            </div>
+
+            <!-- Set Menu -->
+            <div class="ml-md-auto py-2 py-md-0">
+                <!-- Add Button -->
+                <button type="button" class="btn btn-icon btn-round btn-default" rel="tooltip" data-toggle="modal" data-placement="bottom" 
+                    title="Thêm học phần vào lớp hoặc thư mục" data-target="#addSetToFoldersAndCLassesModal">
+                    <i class="fas fa-plus"></i>
+                </button>&nbsp;
+
+                <!-- Edit Button -->
+                <button type="button" class="btn btn-icon btn-round btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+                    title="Sửa" onclick="location.href='@Url.Action("AddClass", "User")'">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>&nbsp;
+
+                <!-- Share Button -->
+                <button type="button" class="btn btn-icon btn-round btn-info" rel="tooltip" data-toggle="modal" data-placement="bottom" 
+                    title="Chia sẻ" data-target="#shareSetModal">
+                    <i class="fas fa-share-alt"></i>
+                </button>&nbsp;
+
+                <!-- Info Button -->
+                <button type="button" class="btn btn-icon btn-round btn-success" rel="tooltip" data-toggle="modal" data-placement="bottom" 
+                    title="Thông tin" data-target="#infoSetModal">
+                    <i class="fa fa-info"></i>
+                </button>&nbsp;
+
+                <!-- More Button -->
+                <span class="dropdown">
+                    <button type="button" class="btn btn-icon btn-round btn-warning" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item text-danger" data-toggle="modal" data-target="#removeClassModal">
+                            <i class="fas fa-trash"></i>
+                            Xóa
+                        </a>
+                    </div>
+                </span>
+                
+            </div>
+        </div>
+
+        <br>
+
+        <!-- Set Describe -->
+        <h5>@ViewData["Set.Describe"]</h5>
+        <b>đã thêm vào thư mục
+            <a href="#">@ViewData["Folder.SetID.Name1"]</a>,
+            <a href="#">@ViewData["Folder.SetID.Name2"]</a>
+        </b>
+        
+        <!-- Card List -->
+        <div class="card mt-5">
+            <div class="card-header">
+                <!-- Add Card -->
+                <a asp-controller="User" asp-action="AddSet" class="btn btn-secondary float-right">
+                    <span class="btn-label">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    Thêm hoặc xóa thuật ngữ
+                </a>
+
+                <!-- Card List Title -->
+                <h2><b>Thuật ngữ trong học phần này (3)</b></h2>
+            </div>
+            
+            <div class="card-body">
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-md-6">
+                        <div class="card card-dark bg-primary-gradient">
+                            <div class="card-body bubble-shadow">
+                                <button type="button" class="btn btn-icon btn-link float-right float-right btncardfc">
+                                    <i class="fas fa-pencil-alt text-white"></i>
+                                </button>
+                                <h1>@ViewData["Set.Card1.Term"]</h1>
+                                <div class="pull-right">
+                                    <h3 class="fw-bold op-8">@ViewData["Set.Card1.Definition"]</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-md-6">
+                        <div class="card card-dark bg-primary-gradient">
+                            <div class="card-body bubble-shadow">
+                                <button type="button" class="btn btn-icon btn-link float-right btncardfc">
+                                    <i class="fas fa-pencil-alt text-white"></i>
+                                </button>
+                                <h1>@ViewData["Set.Card2.Term"]</h1>
+                                <div class="pull-right">
+                                    <h3 class="fw-bold op-8">@ViewData["Set.Card2.Definition"]</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-md-6">
+                        <div class="card card-dark bg-primary-gradient">
+                            <div class="card-body bubble-shadow">
+                                <button type="button" class="btn btn-icon btn-link float-right btncardfc">
+                                    <i class="fas fa-pencil-alt text-white"></i>
+                                </button>
+                                <h1>@ViewData["Set.Card3.Term"]</h1>
+                                <div class="pull-right">
+                                    <h3 class="fw-bold op-8">@ViewData["Set.Card3.Definition"]</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        
+	</div>
+</div>
+
+@Html.Partial("~/Views/Shared/Modal/_addSetToFoldersAndCLassesModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_shareSetModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_infoSetModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_removeClassModal.cshtml")

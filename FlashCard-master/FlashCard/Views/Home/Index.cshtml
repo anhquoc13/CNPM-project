@@ -1,0 +1,101 @@
+﻿ @model Application.ViewModels.HomeViewModel
+
+<div class="page-inner">
+    <!-- Page Url  -->
+    <div class="page-header"> 
+        <h4 class="page-title">@ViewData["Page.Target"]</h4> <!-- Page Target Big -->
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                Trang
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">@ViewData["Page.Target"]</a> <!-- Page Target Small -->
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Page Content  -->
+    <div class="page-category"><br>
+        <!-- Recent -->
+        <div class="col-md-12">
+            <h3>
+                <b>Tiến trình</b>
+                <a href="#" class="float-right text-decoration-none">
+                    Xem tất cả
+                    <i class="fas fa-angle-right"></i>
+                </a>
+            </h3><br>
+
+            <!-- Stats List -->
+            <div class="bg_statsMenu">
+                <!-- NEW -->
+                <a class="statsMenu statsMenu_add" data-toggle="modal" data-target="#createItemModal">
+                    <div class="statsMenu_overlay"></div>
+                    <div class="statsMenu_circle">
+                        <img src="resources\images\svg_icons\add.svg" class="statsMenu_svg-icons">
+                    </div>
+                    <p>Thêm mới</p>
+                </a>
+
+                <!-- Sets -->
+                <a asp-controller="User" asp-action="Sets" class="statsMenu statsMenu_Mark statsMenu_sets">
+                    <div class="statsMenu_overlay"></div>
+                    <div class="statsMenu_circle">
+                        <img src="resources\images\svg_icons\card2.svg" class="statsMenu_svg-icons">
+                    </div>
+                    <p>@ViewData["User.SetCount"] Học phần</p>
+                </a>
+
+                <!-- Folders -->
+                <a asp-controller="User" asp-action="Folders" class="statsMenu statsMenu_Mark statsMenu_folders">
+                    <div class="statsMenu_overlay"></div>
+                    <div class="statsMenu_circle">
+                        <img src="resources\images\svg_icons\folder.svg" class="statsMenu_svg-icons">
+                    </div>
+                    <p>@ViewData["User.FolderCount"] Thư mục</p>
+                </a>
+
+                <!-- Classes -->
+                <a asp-controller="User" asp-action="Classes" class="statsMenu statsMenu_Mark statsMenu_classes">
+                    <div class="statsMenu_overlay"></div>
+                    <div class="statsMenu_circle">     
+                        <img src="resources\images\svg_icons\group.svg" class="statsMenu_svg-icons">
+                    </div>
+                    <p>@ViewData["User.ClassCount"] Lớp học</p>
+                </a>
+
+            </div>
+        </div>
+        
+        <br>
+
+        <!-- Recommend -->
+        <div class="col-md-12">
+            <h3><b>Khuyến nghị</b></h3><br>
+            <div class="card">
+                <div class="card-body">
+                    <div class="media position-relative">
+                        <img src="~/resources/images/recom.png" class="mr-3" alt="...">
+                        <div>
+                            <h5 class="mt-0"><b>Thêm Lớp học của bạn để học tập cùng mọi người</b></h5>
+                            <p>Sau khi bạn cho chúng tôi biết thêm về nội dung đang học, chúng tôi sẽ có thể đề xuất học phần mà bạn cùng lớp đã học.</p>
+                            <a asp-controller="User" asp-action="AddClass" class="btn btn-secondary">Thêm lớp học</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,189 @@
+<!-- Page Header  -->
+<div class="panel-header bg-white">
+    <div class="page-inner py-5">
+        <div class="row item-info-header">
+            <!-- Folder Info -->
+            <div class="col-8">
+                <h5><b>@ViewData["Folder.SetCount"] học phần</b>
+                    <b class="text-muted op-3">&emsp;|&emsp;Tạo bởi</b> 
+                    <a href="" class="text-success">@ViewData["Folder.Owner.Username"]</a>
+                </h5>
+                
+                <div class="item-info-header-title">
+                    <i class="far fa-folder"></i>
+                    <b>@ViewData["Folder.Name"]</b>
+                </div>
+
+                <h5>@ViewData["Folder.Describe"]</h5>
+            </div>
+
+            <!-- Right Menu -->
+            <div class="col-3 ml-auto mr-3">
+                <!-- Add Button -->
+                <button type="button" class="btn btn-icon btn-round btn-secondary" rel="tooltip" data-toggle="modal" data-placement="top" 
+                    title="Thêm học phần" data-target="#addSetToFolderModal">
+                    <i class="fas fa-plus"></i>
+                </button>&ensp;
+
+                <!-- Edit Button -->
+                <button type="button" class="btn btn-icon btn-round btn-secondary" rel="tooltip" data-toggle="modal" data-placement="top" 
+                    title="Học" data-target="#learnFolderModal">
+                    <i class="fas fa-book-reader"></i>
+                </button>&ensp;
+
+                <!-- Share Button -->
+                <button type="button" class="btn btn-icon btn-round btn-secondary" rel="tooltip" data-toggle="modal" data-placement="top" 
+                    title="Chia sẻ" data-target="#shareSetModal">
+                    <i class="fas fa-share-alt"></i>
+                </button>&ensp;
+
+                <!-- More Button -->
+                <span class="dropdown">
+                    <button type="button" class="btn btn-icon btn-round btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#createFolderModal">
+                            <i class="fas fa-pen"></i>&ensp;
+                            Sửa
+                        </a>
+                        <a class="dropdown-item text-danger" data-toggle="modal" data-target="#removeClassModal">
+                            <i class="fas fa-trash"></i>&ensp;
+                            Xóa
+                        </a>
+                    </div>
+                </span>
+
+                <!-- Action toggle switch -->
+                <div class="float-left  mt-3">
+                    <h3><b>Bật thao tác</b></h3>
+                    <label class="btn-switch">
+                        <input type="checkbox" onclick="showActionBtn(5)">
+                        <span></span>
+                    </label>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Page Content  -->
+<div class="page-inner">
+    <div class="page-category">
+        <div class="col-md-12">
+            <!-- Set 1 -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div id="btn-action1" class="btn-action">
+                        <button type="button" class="float-right btn btn-icon btn-round btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button type="button" class="float-right btn btn-icon btn-round btn-info">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="card-category">@ViewData["Folder.SetID1.Count"] thuật ngữ</div>
+                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Folder.SetID1.Name"]</b>
+                    </a>
+                    &emsp;
+                    <i class="card-category far fa-image"></i>
+                    <i class="card-category fas fa-lock"></i>
+                </div>
+            </div>
+
+            <!-- Set 2 -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div id="btn-action2" class="btn-action">
+                        <button type="button" class="float-right btn btn-icon btn-round btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button type="button" class="float-right btn btn-icon btn-round btn-info">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="card-category">@ViewData["Folder.SetID2.Count"] thuật ngữ</div>
+                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Folder.SetID2.Name"]</b>
+                    </a>
+                    &emsp;
+                    <i class="card-category far fa-image"></i>
+                    <i class="card-category fas fa-lock"></i>
+                </div>
+            </div>
+            
+            <!-- Set 3 -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div id="btn-action3" class="btn-action">
+                        <button type="button" class="float-right btn btn-icon btn-round btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button type="button" class="float-right btn btn-icon btn-round btn-info">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="card-category">@ViewData["Folder.SetID3.Count"] thuật ngữ</div>
+                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Folder.SetID3.Name"]</b>
+                    </a>
+                    &emsp;
+                    <i class="card-category far fa-image"></i>
+                    <i class="card-category fas fa-lock"></i>
+                </div>
+            </div>
+
+            <!-- Set 4 -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div id="btn-action4" class="btn-action">
+                        <button type="button" class="float-right btn btn-icon btn-round btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button type="button" class="float-right btn btn-icon btn-round btn-info">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="card-category">@ViewData["Folder.SetID4.Count"] thuật ngữ</div>
+                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Folder.SetID4.Name"]</b>
+                    </a>
+                    &emsp;
+                    <i class="card-category far fa-image"></i>
+                    <i class="card-category fas fa-lock"></i>
+                </div>
+            </div>
+            
+            <!-- Set 5 -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div id="btn-action5" class="btn-action">
+                        <button type="button" class="float-right btn btn-icon btn-round btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button type="button" class="float-right btn btn-icon btn-round btn-info">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                    </div>
+                    <div class="card-category">@ViewData["Folder.SetID4.Count"] thuật ngữ</div>
+                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Folder.SetID4.Name"]</b>
+                    </a>
+                    &emsp;
+                    <i class="card-category far fa-image"></i>
+                    <i class="card-category fas fa-lock"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Shared/Modal/_addSetToFolderModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_learnFolderModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_shareSetModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_createFolderModal.cshtml")
+@Html.Partial("~/Views/Shared/Modal/_removeClassModal.cshtml")

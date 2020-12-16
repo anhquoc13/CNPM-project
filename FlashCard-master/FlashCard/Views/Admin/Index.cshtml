@@ -1,0 +1,142 @@
+@model Application.ViewModels.AdminViewModel
+
+@{
+    int count = 0;
+    var IDSort = (Model.SortOrder == "ID") ? "ID_desc" : "ID";
+    var createdDaySort = (Model.SortOrder == "createdDay") ? "createdDay_desc" : "createdDay";
+    var roleSort = (Model.SortOrder == "role") ? "role_desc" : "role";
+    var statusSort = (Model.SortOrder == "status_desc") ? "status" : "status_desc";
+}
+
+<div class="page-inner">
+    <!-- Page Url  -->
+    <div class="page-header">
+        <h4 class="page-title">@ViewData["Page.Target"]</h4> <!-- Page Target Big -->
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                Quản lí
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">@ViewData["Page.Target"]</a> <!-- Page Target Small -->
+            </li>
+        </ul>
+    </div>
+
+    <!-- Page Content  -->
+    <div class="page-category">
+        <div class="table-responsive" style="padding: 25px;">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <h2>Quản lí tài khoản</h2>
+                    <form method="GET">
+                        <div class="row">
+                            <div class="col mt-4">
+                                <div class="input-group">
+                                    <select class="form-control form-control-md mr-2" asp-for="UserRole" asp-items="Model.roles">
+                                        <option value="">Tất cả</option>
+                                    </select>
+                                    <input type="text" asp-for="SearchString" class="form-control" placeholder="Tìm tài khoản...">
+                                    <div class="input-group-append">
+                                        <input type="submit" value="Tìm" class="btn btn-secondary"></input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col mt-4">
+                                <button href="#" class="float-right btn btn-warning"><i class="fas fa-file-export"></i><span>&ensp;Xuất Excel</span></button>
+                                <a asp-action="Create" class="float-right btn btn-default mr-3"><i class="fas fa-user-plus"></i><span>&ensp;Thêm tài khoản</span></a>				
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <table class="table table-striped table-head-bg-primary mt-4 table-hover">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th><a class="" asp-route-sortOrder="@IDSort"
+                                asp-route-userRole="@Model.UserRole"
+                                asp-route-searchString="@Model.SearchString">
+                                Họ tên</a></th>
+                            <th><a  asp-route-sortOrder="@createdDaySort"
+                                asp-route-userRole="@Model.UserRole"
+                                asp-route-searchString="@Model.SearchString">
+                                Ngày tạo</a></th>
+                            <th><a  asp-route-sortOrder="@roleSort"
+                                asp-route-userRole="@Model.UserRole"
+                                asp-route-searchString="@Model.SearchString">
+                                Phân quyền</a></th>
+                            <th><a  asp-route-sortOrder="@statusSort"
+                                asp-route-userRole="@Model.UserRole"
+                                asp-route-searchString="@Model.SearchString">
+                                Tình trạng</a></th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.userList)
+                        {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>
+                                <div class="avatar avatar-sm">
+                                    <img src="@user.avatar" alt="..." class="avatar-img rounded-circle">
+                                </div>&emsp;
+                                <a asp-controller="User" asp-action="Sets" asp-route-id="@user.ID">@user.ID</a>
+                            </td>
+                            <td>@user.createdDay</td>
+                            @if(@user.role == "Quản trị viên")
+                            {
+                                <td><a asp-action="ChangeRole" asp-route-id="@user.ID" class="text-danger" style="text-decoration: none;">@user.role</a></td>
+                            }                        
+                            else
+                            {
+                                <td><a asp-action="ChangeRole" asp-route-id="@user.ID" style="text-decoration: none;">@user.role</a></td>
+                            }
+                            @if (@user.status == 1)
+                            {
+                                <td><button onclick="location.href='@Url.Action("ChangeStatus", "Admin", new { id = @user.ID })'" class="btn btn-success btn-sm btn-round">Hoạt động</button></td>
+                            }
+                            else
+                            {
+                                <td><button onclick="location.href='@Url.Action("ChangeStatus", "Admin", new { id = @user.ID })'" class="btn btn-danger btn-sm btn-round" data-toggle="tooltip" data-original-title="@user.disableDay">Vô hiệu hóa</button></td>
+                            }
+                            <td>
+                                <button onclick="location.href='@Url.Action("Edit", "User", new { id = @user.ID })'" class="btn btn-icon btn-sm btn-round btn-info mr-2" title="" data-toggle="tooltip" data-original-title="Chỉnh sửa"><i class="fas fa-pen"></i></button>
+                                <button onclick="location.href='@Url.Action("Delete", "Admin", new { id = @user.ID })'" class="btn btn-icon btn-sm btn-round btn-danger" title="" data-toggle="tooltip" data-original-title="Xóa"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+                @{
+                    var prevDisabled = !Model.userList.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.userList.HasNextPage ? "disabled" : "";
+                }
+
+                <a  class="btn btn-default mt-2 @prevDisabled"
+                    asp-route-sortOrder="@Model.SortOrder"
+                    asp-route-userRole="@Model.UserRole"
+                    asp-route-searchString="@Model.SearchString"
+                    asp-route-pageIndex="@(Model.userList.PageIndex -1)">Trước</a>
+                <a  class="btn btn-default mt-2 @nextDisabled"
+                    asp-route-sortOrder="@Model.SortOrder"
+                    asp-route-userRole="@Model.UserRole"
+                    asp-route-searchString="@Model.SearchString"
+                    asp-route-pageIndex="@(Model.userList.PageIndex +1)">Sau</a>
+
+            </div>
+        </div>
+    </div>
+</div>

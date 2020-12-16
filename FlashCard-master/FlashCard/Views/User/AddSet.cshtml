@@ -1,0 +1,150 @@
+@model Application.ViewModels.UserViewModel 
+
+<div class="panel-header bg-white">
+    <div class="page-inner py-5">
+        <!-- Page Url  -->
+        <div class="page-header">
+            <h4 class="page-title">@ViewData["Page.Target"]</h4> <!-- Page Target Big -->
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="fas fa-angle-right"></i>
+                </li>
+                <li class="nav-item">
+                    Trang
+                </li>
+                <li class="separator">
+                    <i class="fas fa-angle-right"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">@ViewData["Page.Target"]</a> <!-- Page Target Small -->
+                </li>
+            </ul>
+        </div>
+
+        <!-- Page Content -->
+        <div class="card-body" style="margin-top: -20px;">
+            <h1><b>Tạo học phần mới</b></h1>
+            <div class="row">
+                 <!-- input form -->
+                <div class="col-6">
+                    <div class="form-group form-floating-label">
+                        <input id="TitleSetLabel" type="text" class="form-control input-border-bottom" required="">
+                        <label for="TitleSetLabel" class="placeholder">
+                            <h4><b>Tiêu đề</b></h4>
+                        </label>
+                    </div><br>
+                    
+                    <div class="form-group form-floating-label">
+                        <input id="DescribeSetLabel" type="text" class="form-control input-border-bottom" required="">
+                        <label for="DescribeSetLabel" class="placeholder">
+                            <h4><b>Mô tả</b></h4>
+                        </label>
+                    </div>
+                </div>
+
+                 <!-- permission -->
+                <div class="col-4 ml-auto mr-3 text-left mt-1"><br>
+                    <h4><b>Hiển thị với mọi người</b></h4>
+                    <a href="#" class="text-success">Thay đổi</a>
+
+                    <br><br>
+
+                    <h4><b>Chỉ tôi có quyền sửa</b></h4>
+                    <a href="#" class="text-success">Thay đổi</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="panel-header">
+    <div class="page-inner">
+
+            <div class="card">
+                <div class="card-header">
+                    <!-- Delete Card -->
+                    <button class="btn btn-danger float-right">
+                        <span class="btn-label">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                    </button>
+
+                    <!-- Card Count -->
+                    <h2><b>1</b></h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col form-group form-floating-label">
+                            <input id="TermLabel" type="text" class="form-control input-border-bottom" required="">
+                            <label for="TermLabel" class="placeholder">
+                                <h4><b>Thuật ngữ</b></h4>
+                            </label>
+                        </div><br>
+                        
+                        <div class="col form-group form-floating-label">
+                            <input id="DescribeTermLabel" type="text" class="form-control input-border-bottom" required="">
+                            <label for="DescribeTermLabel" class="placeholder">
+                                <h4><b>Định nghĩa</b></h4>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <!-- Delete Card -->
+                    <button class="btn btn-danger float-right">
+                        <span class="btn-label">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                    </button>
+
+                    <!-- Card Count -->
+                    <h2><b>2</b></h2>
+                </div> 
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col form-group form-floating-label">
+                            <input id="TermLabel2" type="text" class="form-control input-border-bottom" required="">
+                            <label for="TermLabel2" class="placeholder">
+                                <h4><b>Thuật ngữ</b></h4>
+                            </label>
+                        </div><br>
+                        
+                        <div class="col form-group form-floating-label">
+                            <input id="DescribeTermLabel2" type="text" class="form-control input-border-bottom" required="">
+                            <label for="DescribeTermLabel2" class="placeholder">
+                                <h4><b>Định nghĩa</b></h4>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Card -->
+            <div class="card">               
+                <div class="card-body">
+                    <a href="#" class="text-success text-center" style="text-decoration: none;">
+                        <h1><b>Thêm thẻ</b></h1>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button class="btn btn-info btn-lg float-right mb-5"
+            style=" padding: 1.5rem 5rem;
+                    font-weight: 700;
+                    font-size: 1.125rem;">
+                Tạo
+            </button>
+
+    </div>
+</div>

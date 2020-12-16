@@ -1,0 +1,332 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="flasdcard learning project">
+    <meta name="author" content="PTTKTeam">
+
+    <title>Công cụ học tập miễn phí | Flashcard</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/Plugins/all.min.css">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/Plugins/owl-carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/Plugins/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/Plugins/aqua.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/Bootstrap/bootstrap.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="~/resources/css/Intro.css" asp-append-version="true">
+    
+    <!--Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="~/resources/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/resources/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/resources/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/resources/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/resources/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/resources/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/resources/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/resources/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/resources/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="~/resources/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/resources/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/resources/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/resources/icon/favicon-16x16.png">
+    <link rel="manifest" href="~/resources/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/resources/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <!--  Preloader Start  -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!--  Preloader End  -->
+
+
+    <!--  Header Area Start   -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!--  Logo Start  -->
+                        <a class="logo" asp-controller="Intro" asp-action="Index">
+                            <img src="~/resources/icon/favicon-96x96.png" width="50">
+                            Flashcard
+                        </a>
+                        <!--  Logo End  -->
+
+                        <!--  Menu Start  -->
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <ul class="nav">
+                                <li class="scroll-to-section">
+                                    <a asp-action="Index" asp-controller="Home"><b>Hello @User.Identity.Name</b></a>
+                                </li>
+
+                                <li class="scroll-to-section">
+                                    <a asp-action="Logout" asp-controller="Intro">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <b>Đăng xuất</b>
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="nav">
+                                <li class="scroll-to-section">
+                                    <a asp-action="Login" asp-controller="Intro">
+                                        <i class="fas fa-user"></i>
+                                        <b>Đăng nhập</b>
+                                    </a>
+                                </li>
+
+                                <li class="scroll-to-section">
+                                    <a asp-action="Register" asp-controller="Intro">
+                                        <i class="fas fa-user-plus"></i>
+                                        <b>Đăng ký</b>
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!--  Menu End  -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--  Header Area End  -->
+
+
+    <!--  Welcome Start  -->
+    <div class="welcome-area" id="welcome">
+        <div class="header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12  mt-5" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                        <h1><b>Trở thành phiên bản xuất sắc nhất của chính bạn <i class="far fa-grin-wink"></i></b></h1><br>
+                        <p>Nắm vững mọi môn học, từng bước.</p>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button onclick="location.href='@Url.Action("Index", "Home")'" class="btn main-button-slider"><b>Bắt đầu học</b></button>
+                        }
+                        else
+                        {
+                            <button onclick="location.href='@Url.Action("Login", "Intro")'" class="btn main-button-slider"><b>Bắt đầu học</b></button>
+                        }
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                        <img src="resources/images/welcome-bg-hand.png" class="rotateAndFloatAnimate font-img-2 rounded img-fluid d-block mx-auto" alt="First Vector Graphic">    
+                        <img src="resources/images/welcome-bg-body.png" class="floatAnimate font-img-1 rounded img-fluid d-block mx-auto" alt="First Vector Graphic">
+                        <img src="resources/images/welcome-bg-back.png" class="back-img rounded img-fluid d-block mx-auto" alt="First Vector Graphic">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  Welcome End  -->
+
+
+    <!--  About Header Start  -->
+    <section class="section" id="aboutheader">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 180px; margin-top: 190px;">
+                <h1 style="font-size: 2.5em;">
+                    <img src="resources/images/90percent.JPG" alt="percent" width="168" height="auto" style="margin-top: -10px;">
+                    người dùng <b style="color: #1572E8;">Flashcard</b> cho biết họ đã cải thiện được điểm số.
+                </h1>
+            </div>
+        </div>
+    </section>
+    <!--  About Header End  -->
+
+
+    <!--  First About Content  Start  -->
+    <section class="section" id="about1">
+        <div class="container">
+            <div class="row">
+                <div class="left-text col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix">
+                    <div class="left-heading mt-5">
+                        <h1><b>Bạn chỉ cần động não, còn mọi thứ khác đã có chúng tôi lo.</b></h1>
+                    </div><br><br>
+                    <div class="left-text">
+                        <h4>Từ các thẻ ghi nhớ giúp bạn học tiếng Anh, đến các trò chơi giúp học lịch sử dễ dàng, bạn có thể sử dụng nhiều loại công cụ để chinh phục mọi thử thách.</h4>
+                    </div>
+                </div>
+                <div class="right-image col-lg-7 col-md-12 col-sm-12 mobile-bottom-fix-big" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                    <img src="resources/images/About-Image1.png" class="rounded img-fluid d-block mx-auto" alt="First About Image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  First About Content End  -->
+
+
+    <!--  Second About Content Start  -->
+    <section class="section" id="about2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                    <img src="resources/images/About-Image2.png" class="rounded img-fluid d-block mx-auto" alt="Second About Image">
+                </div>
+                <div class="right-text col-lg-5 col-md-12 col-sm-12 mobile-top-fix mt-5">
+                    <div class="left-heading mt-5">
+                        <h1>
+                            <b>Thành công tiếp theo của bạn đang ở rất gần rồi.</b>
+                        </h1><br><br>
+                    </div>
+                    <h4>Mỗi kiến thức mới bạn học là một thành tích. Quizlet chia nhỏ các chủ đề và môn học để bạn tiến bộ từng ngày.</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  Second About Content End  -->
+
+
+    <!--  Third About Content  Start  -->
+    <section class="section" id="about3">
+        <div class="container">
+            <div class="row">
+                <div class="left-text col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix">
+                    <div class="left-heading" style="margin-top: 150px;">
+                        <h1>
+                            <b>Đừng nản lòng. Cùng nỗ lực nào.</b>
+                        </h1><br><br>
+                    </div>
+                    <h4>Khi một bài học nhỏ nhất cũng mang lại cảm giác chiến thắng, bạn sẽ có thêm động lực tiếp bước.</h4>
+                </div>
+                <div class="right-image col-lg-7 col-md-12 col-sm-12 mobile-bottom-fix-big" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                    <img src="resources/images/About-Image3.png" class="rounded img-fluid d-block mx-auto" alt="Third About Image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  Third About Content End  -->
+
+
+    <!-- Get APP Start -->
+    <section class="section" id="getapp">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 120px; margin-top: 150px;">
+                <h1><b>Mang học thức bên bạn</b></h1>
+                <div class="Get_App">
+                    <a href=""><img src="resources/images/app_apple.png" alt="Get it" style="width: 15%; height: auto; margin-top: 50px;"></a>
+                    <a href=""><img src="resources/images/app_chplay.png" alt="Get it" style="width: 15%; height: auto; margin-top: 50px;"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Get APP End -->
+
+    <!-- Footer Start -->
+    <footer class="new_footer_area bg_color">
+        <div class="new_footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">
+                                Giữ liên hệ
+                            </h3>
+                            <p>Đừng bỏ qua tin mới của chúng tôi !</p>
+                            <form action="#" class="f_subscribe_two mailchimp" method="post" _lpchecked="1">
+                                <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                                <button class="btn btn_get btn_get_two" type="submit">
+                                    Đăng ký
+                                </button>
+                                <p class="mchimp-errmessage" style="display: none;"></p>
+                                <p class="mchimp-sucmessage" style="display: none;"></p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">
+                                Tải về
+                            </h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">Công ty</a></li>
+                                <li><a href="#">Android App</a></li>
+                                <li><a href="#">ios App</a></li>
+                                <li><a href="#">Desktop</a></li>
+                                <li><a href="#">Dự án</a></li>
+                                <li><a href="#">Công việc</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Term &amp; conditions</a></li>
+                                <li><a href="#">Báo cáo</a></li>
+                                <li><a href="#">Tài liệu</a></li>
+                                <li><a href="#">Hỗ trợ</a></li>
+                                <li><a href="#">Quyền riêng tư</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                            <h3 class="f-title f_600 t_color f_size_18">
+                                Giải pháp nhóm
+                            </h3>
+                            <div class="f_social_icon">
+                                <a href="#" class="fab fa-facebook"></a>
+                                <a href="#" class="fab fa-twitter"></a>
+                                <a href="#" class="fab fa-linkedin"></a>
+                                <a href="#" class="fab fa-pinterest"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bg">
+                <div class="footer_bg_one"></div>
+                <div class="footer_bg_two"></div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <p class="mb-0 f_400">© Flashcard Inc.. 2020 All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    
+    <!-- jQuery -->
+    <script src="~/vendors/js/jQuery/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/vendors/js/Bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="~/vendors/js/Plugins/owl-carousel.js"></script>
+    <script src="~/vendors/js/Plugins/scrollreveal.min.js"></script>
+
+    <!-- Js Files -->
+    <script src="~/resources/js/Intro.js"></script>
+</body>
+</html>

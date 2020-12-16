@@ -1,0 +1,55 @@
+//Font
+font_family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+font_icons: fontawesome;
+
+//Version
+Bootstrap               4.1.3
+Css Animate Version     4.1.1
+normalize.css           8.0.1
+Owl Carousel            2.3.4
+Font Awesome Free       5.11.2
+
+//URL Map
+localhost:5001/
+├── Home                localhost:5001
+│
+├── Intro/              localhost:5001/intro
+│   └── About           localhost:5001/intro/about
+│
+├── Error               localhost:5001/error
+│
+├── Flashcards          localhost:5001/flashcards
+│
+└── User/               localhost:5001/user
+    ├── Edit            localhost:5001/user/edit
+    ├── Addclass        localhost:5001/user/addclass
+    ├── Sets            localhost:5001/user/sets
+    ├── Folders         localhost:5001/user/folders
+    └── Classes         localhost:5001/user/classes
+
+
+//Folders Path Map
+wwwroot/
+├── resources/
+│   ├── css
+│   ├── js
+│   ├── icon
+│   └── images/
+│       ├── user
+│       └── team
+│
+└── vendors/
+    ├── css/
+    │   ├── Bootstrap
+    │   └── Plugins
+    │    
+    ├── js/
+    │   ├── jQuery
+    │   ├── Bootstrap
+    │   └── Plugins
+    │
+    ├── lib/
+    │   ├── jquery-validation
+    │   └── jquery-validation-unobtrusive
+    │
+    └── webfonts

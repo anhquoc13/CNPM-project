@@ -1,0 +1,42 @@
+﻿@model Application.ViewModels.UserViewModel  
+
+<!-- Page Header  -->
+<div class="panel-header bg-white">
+    <div class="page-inner">
+        @await Html.PartialAsync("~/Views/Shared/_ownerLayout.cshtml")
+    </div>
+</div>
+
+<!-- Page Content  -->
+<div class="page-inner">
+    <div class="page-category">
+        <div class="col-md-12">
+            <!-- Folder 1  -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div class="card-category">
+                        @ViewData["Folder.ID1.Count"] học phần
+                    </div>
+                    <i class="far fa-folder card-title"></i>&emsp;
+                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Folder.ID1.Name"]</b>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Folder 2  -->
+            <div class="card cardHoverLine card-stats card-round">
+                <div class="card-body">
+                    <div class="card-category">
+                        @ViewData["Folder.ID2.Count"] học phần
+                    </div>
+                    <i class="far fa-folder card-title"></i>&emsp;
+                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>@ViewData["Folder.ID2.Name"]</b>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

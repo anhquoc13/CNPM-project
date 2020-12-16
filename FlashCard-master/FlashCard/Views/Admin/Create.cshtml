@@ -1,0 +1,123 @@
+@model Application.ViewModels.RegisterViewModel
+
+<div class="page-inner">
+	<!-- Page Url  -->
+    <div class="page-header">
+        <h4 class="page-title">@ViewData["Page.Target"]</h4> <!-- Page Target Big -->
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                Trang
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">@ViewData["Page.Target"]</a> <!-- Page Target Small -->
+            </li>
+        </ul>
+    </div>
+
+    <!-- Page Content  -->
+	<div class="page-category">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <form asp-action="Create" asp-controller="Admin" method="POST">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+                        
+                        <div class="form-group">
+                            <label for="username">Họ tên (ID): </label>
+                            <div class="input-icon">
+                                <span class="input-icon-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input asp-for="id" type="text" class="form-control" placeholder="Nhập họ tên...">
+                            </div>
+                        </div>
+                        <span asp-validation-for="id" class="text-danger ml-4"></span>
+                        
+                        <div class="form-group">
+                            <label for="username">Biệt danh: </label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">@Html.Raw("@")</span>
+                                </div>
+                                <input asp-for="Tagname" type="text" class="form-control" placeholder="Nhập biệt danh..." aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <span asp-validation-for="Tagname" class="text-danger ml-4"></span>
+                        
+                        <div class="form-group">
+                            <label for="Email">Email: </label>
+                            <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="example@FlashCard.com">
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger ml-4"></span>
+                        
+                        <div class="form-group">
+                            <label for="password">Mật khẩu: </label>
+                            <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Nhập mật khẩu...">
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger ml-4"></span>
+                        
+                        <div class="form-group">
+                            <label for="ConfirmPassword">Nhập lại mật khẩu: </label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" id="ConfirmPassword" placeholder="Nhập lại mật khẩu...">
+                        </div>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger ml-4"></span>
+                        
+                        <div class="form-group">
+                            <label for="country">Quốc gia: </label>
+                            <input asp-for="data.contry" type="text" class="form-control" id="country" placeholder="Nhập quốc gia ...">
+                        </div>
+                        <span asp-validation-for="data.contry" class="text-danger ml-4"></span>
+
+                        <div class="form-group">
+                            <label for="userRole">Phân quyền: </label>
+                            <input asp-for="userRole" type="text" class="form-control" id="userRole" value="Thành viên">
+                        </div>
+                        <span asp-validation-for="userRole" class="text-danger ml-4"></span>
+                        
+                        <div class="form-group mb-4">
+                            <label for="userStatus">Tình trạng: </label>
+                            <input asp-for="userStatus" type="text" class="form-control" id="userStatus" value="Hoạt động">
+                        </div>
+                        <span asp-validation-for="userStatus" class="text-danger ml-4"></span>
+                        <button type="submit" value="Create" class="btn btn-success mt-4 mb-3 ml-2">
+                            <span class="btn-label"><i class="fa fa-save"></i></span>&ensp;
+                            Tạo tài khoản
+                        </button>
+                        <a asp-action="Index" class="btn btn-danger mt-4 mb-3 ml-2">
+                            <span class="btn-label"><i class="fas fa-arrow-left"></i></span>&ensp;
+                            Trở về
+                        </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="profile-img">
+                            <img src="/resources/images/user/avt_hidden.jpg" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Chọn ảnh
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+	</div>
+</div>
