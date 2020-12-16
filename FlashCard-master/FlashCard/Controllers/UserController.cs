@@ -46,7 +46,7 @@ namespace LearningWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(string id, UserViewModel model)
+        public IActionResult Edit(UserViewModel model)
         {
             if (!User.Identity.IsAuthenticated || !_userManager.IsAdmin(User.Identity.Name))
             {
@@ -59,12 +59,12 @@ namespace LearningWeb.Controllers
             {
                 if (model.Password != model.ConfirmPassword)
                 {
-                    model.edit = _userManager.GetBy(id, User.Identity.Name);
+                    model.edit = _userManager.GetBy(model.Id, User.Identity.Name);
                     ModelState.AddModelError(string.Empty, "Mật khẩu không khớp");
                     return View(model);
                 }
                 User userToUpdate = new User();
-                userToUpdate.ID = model.id;
+                userToUpdate.ID = model.Id;
                 userToUpdate.tagname = model.Tagname;
                 userToUpdate.email = model.Email;
                 userToUpdate.passwd = model.Password;
@@ -83,7 +83,7 @@ namespace LearningWeb.Controllers
             else
             {
                 model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
-                model.edit = _userManager.GetBy(id, User.Identity.Name); 
+                model.edit = _userManager.GetBy(model.Id, User.Identity.Name); 
             }
             return View(model);  
         }

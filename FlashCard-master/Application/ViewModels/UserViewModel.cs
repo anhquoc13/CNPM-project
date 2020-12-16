@@ -6,9 +6,7 @@ namespace Application.ViewModels
 {
     public class UserViewModel
     {
-        [Required(ErrorMessage = "Tài khoản không được phép để trống")]
-        [RegularExpression(@".{5,}", ErrorMessage = "Tài khoản ít nhất 5 ký tự")]
-        public string id { get; set; }
+        public string Id { get; set; }
         [Required(ErrorMessage = "Biệt danh không được phép để trống")]
         [RegularExpression(@".{5,}", ErrorMessage = "Biệt danh ít nhất 5 ký tự")]
         public string Tagname { get; set; }

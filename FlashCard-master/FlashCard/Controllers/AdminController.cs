@@ -79,7 +79,6 @@ namespace LearningWeb.Controllers
                 }
                 User userToCreate = new User();
                 userToCreate = model.data;
-                userToCreate.Id = model.id;
                 userToCreate.ID = model.id;
                 userToCreate.tagname = model.Tagname;
                 userToCreate.email = model.Email;

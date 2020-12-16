@@ -9,14 +9,26 @@ namespace Domain.Entities
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<FlashCardContext>();
+                SeedData.Initialize(context);
+            }
+
+            host.Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        private static IHost CreateHostBuilder()
+        {
+            return Host.CreateDefaultBuilder()
+                        .ConfigureWebHostDefaults(builder =>
+                        {
+                            builder.UseStartup<Startup>();
+                        })
+                        .Build();
+        }
     }
 }

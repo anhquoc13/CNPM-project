@@ -10,6 +10,7 @@ namespace Application.Mappings
         {
             return new UserDto
             {
+                Id = user.Id,
                 ID = user.ID,
                 tagname = user.tagname,
                 avatar = user.avatar
@@ -20,7 +21,7 @@ namespace Application.Mappings
         {
             return new User
             {
-                Id = userDto.ID,
+                Id = userDto.Id,
                 ID = userDto.ID,
                 tagname = userDto.tagname,
                 avatar = userDto.avatar
@@ -29,7 +30,7 @@ namespace Application.Mappings
 
         public static void MappingUser(this UserDto userDto, User user)
         {
-            user.Id = userDto.ID;
+            user.Id = userDto.Id;
             user.ID = userDto.ID;
             user.tagname = userDto.tagname;
             user.avatar = userDto.avatar;
