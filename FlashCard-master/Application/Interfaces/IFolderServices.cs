@@ -7,6 +7,7 @@ namespace Application.Interfaces
     {
         FolderDto GetBy(int id);
         IEnumerable<FolderDto> GetAll();
+        int FolderCount(string id);
         void CreateFolder(FolderDto folderDto);
         void UpdateFolder(FolderDto folderDto);
         void DeleteFolder(int id);

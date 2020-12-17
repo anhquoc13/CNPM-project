@@ -32,6 +32,11 @@ namespace Application.Services
             return _courseRepository.GetAll().MappingDto();
         }
 
+        public int CourseCount(string id)
+        {
+            return _courseRepository.Count(id);
+        }
+
         public void CreateCourse(CourseDto CourseDto)
         {
             var courseToCreate = _courseRepository.GetBy(CourseDto.ID);

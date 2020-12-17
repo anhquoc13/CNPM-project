@@ -7,6 +7,7 @@ namespace Application.Interfaces
     {
         ClassDto GetBy(int id);
         IEnumerable<ClassDto> GetAll();
+        int ClassCount(string id);
         void CreateClass(ClassDto classDto);
         void UpdateClass(ClassDto classDto);
         void DeleteClass(int id);

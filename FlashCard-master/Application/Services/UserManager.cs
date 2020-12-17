@@ -76,11 +76,6 @@ namespace Application.Services
             return _userRepository.GetRoles();
         }
 
-        public UserDto GetOwner(string id)
-        {
-            return _userRepository.GetBy(id).MappingDto();
-        }
-
         public bool IsAdmin(string id)
         {
             return _userRepository.GetBy(id).role == "Quản trị viên";

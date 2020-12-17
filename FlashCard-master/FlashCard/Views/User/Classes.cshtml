@@ -15,15 +15,15 @@
             <div class="card cardHoverLine card-stats card-round">
                 <div class="card-body">
                     <div class="card-category">
-                        <b class="text-black">@ViewData["Class.ID1.setID.Count"] học phần</b>
+                        <b class="text-black">2 học phần</b>
                         &emsp;|&emsp;
-                        <b class="text-black">@ViewData["Class.ID1.userID.Count"] thành viên</b>
+                        <b class="text-black">11 thành viên</b>
                         &emsp;|&emsp;
-                        @ViewData["Class.ID1.School"]
+                        SGUL • Ho Chi Minh City, Viet Nam
                     </div>
                     <i class="far fa-user card-title"></i>&emsp;
-                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Class.ID1.Name"]</b>
+                    <a asp-controller="Classes" asp-action="Index" asp-route-id="1" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>Lớp tiếng trung cơ bản</b>
                     </a>
                 </div>
             </div>
@@ -32,32 +32,15 @@
             <div class="card cardHoverLine card-stats card-round">
                 <div class="card-body">
                     <div class="card-category">
-                        <b class="text-black">@ViewData["Class.ID2.setID.Count"] học phần</b>
+                        <b class="text-black">3 học phần</b>
                         &emsp;|&emsp;
-                        <b class="text-black">@ViewData["Class.ID2.userID.Count"] thành viên</b>
+                        <b class="text-black">4 thành viên</b>
                         &emsp;|&emsp;
-                        @ViewData["Class.ID2.School"]
+                        SGUL • Ho Chi Minh City, Viet Nam
                     </div>
                     <i class="far fa-user card-title"></i>&emsp;
-                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Class.ID2.Name"]</b>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Class 3 -->
-            <div class="card cardHoverLine card-stats card-round">
-                <div class="card-body">
-                    <div class="card-category">
-                        <b class="text-black">@ViewData["Class.ID3.setID.Count"] học phần</b>
-                        &emsp;|&emsp;
-                        <b class="text-black">@ViewData["Class.ID3.userID.Count"] thành viên</b>
-                        &emsp;|&emsp;
-                        @ViewData["Class.ID3.School"]
-                    </div>
-                    <i class="far fa-user card-title"></i>&emsp;
-                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Class.ID3.Name"]</b>
+                    <a asp-controller="Classes" asp-action="Index" asp-route-id="2" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>Lớp 116A - Đại học Sài Gòn SGU</b>
                     </a>
                 </div>
             </div>

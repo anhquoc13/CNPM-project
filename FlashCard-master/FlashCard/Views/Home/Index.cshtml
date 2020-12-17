@@ -1,4 +1,4 @@
-﻿ @model Application.ViewModels.HomeViewModel
+﻿@model Application.ViewModels.HomeViewModel
 
 <div class="page-inner">
     <!-- Page Url  -->
@@ -54,7 +54,7 @@
                     <div class="statsMenu_circle">
                         <img src="resources\images\svg_icons\card2.svg" class="statsMenu_svg-icons">
                     </div>
-                    <p>@ViewData["User.SetCount"] Học phần</p>
+                    <p>@Model.user.CourseCount Học phần</p>
                 </a>
 
                 <!-- Folders -->
@@ -63,7 +63,7 @@
                     <div class="statsMenu_circle">
                         <img src="resources\images\svg_icons\folder.svg" class="statsMenu_svg-icons">
                     </div>
-                    <p>@ViewData["User.FolderCount"] Thư mục</p>
+                    <p>@Model.user.FolderCount Thư mục</p>
                 </a>
 
                 <!-- Classes -->
@@ -72,7 +72,7 @@
                     <div class="statsMenu_circle">     
                         <img src="resources\images\svg_icons\group.svg" class="statsMenu_svg-icons">
                     </div>
-                    <p>@ViewData["User.ClassCount"] Lớp học</p>
+                    <p>@Model.user.ClassCount Lớp học</p>
                 </a>
 
             </div>

@@ -5,6 +5,6 @@ namespace Domain.Repositories
 {
     public interface IClassRepository : IRepository<Class>
     {
-        Class GetBy(int id);
+        int Count(string id);
     }
 }

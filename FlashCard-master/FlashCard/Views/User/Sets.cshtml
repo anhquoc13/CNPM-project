@@ -17,86 +17,31 @@
             <div class="card cardHoverLine card-stats card-round">
                 <div class="card-body">
                     <div class="card-category">
-                        @ViewData["Set.ID1.Count"] thuật ngữ
+                        3 thuật ngữ
                     </div>
-                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Set.ID1.Name"]</b>
+                    <a asp-controller="Sets" asp-action="Index" asp-route-id="1" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>Tiếng anh nhập môn</b>
                     </a>
                     &emsp;
                     <i class="card-category far fa-image"></i>
                     <i class="card-category fas fa-lock"></i>
                 </div>
             </div>
-
-        </div>
-
-        <!-- This week  -->
-        <div class="col-md-12">
-            <h3><b>Tuần này</b><hr style="float: right; width: 47vw; border-bottom: 1px solid black;"/></h3>
+            
             <!-- Set 2 -->
             <div class="card cardHoverLine card-stats card-round">
                 <div class="card-body">
                     <div class="card-category">
-                        @ViewData["Set.ID2.Count"] thuật ngữ
+                        8 thuật ngữ
                     </div>
-                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Set.ID2.Name"]</b>
+                    <a asp-controller="Sets" asp-action="Index" asp-route-id="2" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>Tiếng trung cơ bản</b>
                     </a>
                     &emsp;
                     <i class="card-category far fa-image"></i>
                     <i class="card-category fas fa-lock"></i>
                 </div>
             </div>
-            
-            <!-- Set 3 -->
-            <div class="card cardHoverLine card-stats card-round">
-                <div class="card-body">
-                    <div class="card-category">
-                        @ViewData["Set.ID3.Count"] thuật ngữ
-                    </div>
-                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Set.ID3.Name"]</b>
-                    </a>
-                    &emsp;
-                    <i class="card-category far fa-image"></i>
-                    <i class="card-category fas fa-lock"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- Last week  -->
-        <div class="col-md-12">
-            <h3><b>Tuần trước</b><hr style="float: right; width: 47vw; border-bottom: 1px solid black;"/></h3>
-            <!-- Set 4 -->
-            <div class="card cardHoverLine card-stats card-round">
-                <div class="card-body">
-                    <div class="card-category">
-                        @ViewData["Set.ID4.Count"] thuật ngữ
-                    </div>
-                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Set.ID4.Name"]</b>
-                    </a>
-                    &emsp;
-                    <i class="card-category far fa-image"></i>
-                    <i class="card-category fas fa-lock"></i>
-                </div>
-            </div>
-            
-            <!-- Set 5 -->
-            <div class="card cardHoverLine card-stats card-round">
-                <div class="card-body">
-                    <div class="card-category">
-                        @ViewData["Set.ID4.Count"] thuật ngữ
-                    </div>
-                    <a href="#" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Set.ID4.Name"]</b>
-                    </a>
-                    &emsp;
-                    <i class="card-category far fa-image"></i>
-                    <i class="card-category fas fa-lock"></i>
-                </div>
-            </div>
-        </div>
 
     </div>
 </div>

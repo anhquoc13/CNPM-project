@@ -14,5 +14,11 @@ namespace Application.DTO
         public string tagname { get; set; }
         [Required]
         public string avatar { get; set; }
+        public string email { get; set; }
+        [Required]
+        public string role { get; set; }
+        public int CourseCount { get; set; }
+        public int FolderCount { get; set; }
+        public int ClassCount { get; set; }
     }
 }

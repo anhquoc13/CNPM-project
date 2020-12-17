@@ -15,11 +15,11 @@
             <div class="card cardHoverLine card-stats card-round">
                 <div class="card-body">
                     <div class="card-category">
-                        @ViewData["Folder.ID1.Count"] học phần
+                        7 học phần
                     </div>
                     <i class="far fa-folder card-title"></i>&emsp;
-                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Folder.ID1.Name"]</b>
+                    <a asp-controller="Folders" asp-action="Index" asp-route-id="1" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>Tiếng trung cơ bản</b>
                     </a>
                 </div>
             </div>
@@ -28,11 +28,11 @@
             <div class="card cardHoverLine card-stats card-round">
                 <div class="card-body">
                     <div class="card-category">
-                        @ViewData["Folder.ID2.Count"] học phần
+                        2 học phần
                     </div>
                     <i class="far fa-folder card-title"></i>&emsp;
-                    <a href="" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>@ViewData["Folder.ID2.Name"]</b>
+                    <a asp-controller="Folders" asp-action="Index" asp-route-id="2" class="card-title text-uppercase" style="text-decoration: none;">
+                        <b>Tiếng anh viết và đọc</b>
                     </a>
                 </div>
             </div>

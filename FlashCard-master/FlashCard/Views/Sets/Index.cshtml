@@ -26,7 +26,7 @@
     <!-- Page Content  -->
 	<div class="page-category">
         <!-- Set Title  -->
-        <h1><b>@ViewData["Page.Title"]</b></h1>
+        <h1><b>Tiếng anh nhập môn</b></h1>
 
         <br>
 
@@ -37,23 +37,23 @@
                     <b>Học</b>
                 </h5>
 
-                <a href="#" class="btn button _btnleft">
-                    <img src="resources\images\svg_icons\card.svg" class="svg-setmenu">&emsp;
+                <a asp-action="Index" asp-route-id="1" class="btn button _btnleft">
+                    <img src="\resources\images\svg_icons\card.svg" class="svg-setmenu">&emsp;
                     Thẻ ghi nhớ
                 </a><br>
                 
-                <a href="#" class="btn button _btnleft">
-                    <img src="resources\images\svg_icons\play.svg" class="svg-setmenu">&emsp;
+                <a asp-action="TestOfSet" asp-route-id="1" class="btn button _btnleft">
+                    <img src="\resources\images\svg_icons\play.svg" class="svg-setmenu">&emsp;
                     Học
                 </a><br>
 
-                <a href="#" class="btn button _btnleft">
-                    <img src="resources\images\svg_icons\writing.svg" class="svg-setmenu">&emsp;
+                <a asp-action="TestOfSet" asp-route-id="1" class="btn button _btnleft">
+                    <img src="\resources\images\svg_icons\writing.svg" class="svg-setmenu">&emsp;
                     Viết
                 </a><br>
 
-                <a href="#" class="btn button _btnleft">
-                    <img src="resources\images\svg_icons\book.svg" class="svg-setmenu">&emsp;
+                <a asp-action="TestOfSet" asp-route-id="1" class="btn button _btnleft">
+                    <img src="\resources\images\svg_icons\book.svg" class="svg-setmenu">&emsp;
                     Kiểm tra
                 </a><br>
             </div>
@@ -67,12 +67,12 @@
                             <div class="cardfc">
                                 <div class="side front">
                                     <div class="info">
-                                        <b>@ViewData["Set.Card1.Term"]</b>
+                                        <b>Hello</b>
                                     </div>
                                 </div>
                                 <div class="side back">
                                     <div class="info">
-                                        <b>@ViewData["Set.Card1.Definition"]</b>
+                                        <b>Xin chào</b>
                                     </div>
                                 </div>
                             </div>
@@ -83,12 +83,12 @@
                             <div class="cardfc">
                                 <div class="side front">
                                     <div class="info">
-                                        <b>@ViewData["Set.Card2.Term"]</b>
+                                        <b>Goodbye</b>
                                     </div>
                                 </div>
                                 <div class="side back">
                                     <div class="info">
-                                        <b>@ViewData["Set.Card2.Definition"]</b>
+                                        <b>Tạm biệt</b>
                                     </div>
                                 </div>
                             </div>
@@ -99,12 +99,12 @@
                             <div class="cardfc">
                                 <div class="side front">
                                     <div class="info">
-                                        <b>@ViewData["Set.Card3.Term"]</b>
+                                        <b>Apple</b>
                                     </div>
                                 </div>
                                 <div class="side back">
                                     <div class="info">
-                                        <b>@ViewData["Set.Card3.Definition"]</b>
+                                        <b>Quả táo</b>
                                     </div>
                                 </div>
                             </div>
@@ -141,11 +141,11 @@
             <!-- Set Owner -->
             <div class="row">
                 <div class="avatar mt-2">
-                    <img src="@ViewData["Set.Owner.Avatar"]" alt="Owner Avatar" class="avatar-img rounded-circle">
+                    <img src="/resources/images/user/avt_1.jpg" alt="Owner Avatar" class="avatar-img rounded-circle">
                 </div>
                 <div class="col" style="width: 300px; font-size: 1.5em;">
                     <div class="text-muted">Tạo bởi</div>
-                    <a href="">@ViewData["Set.Owner.Username"]</a>   
+                    <a href="">tuanvu</a>   
                 </div>
             </div>
 
@@ -159,7 +159,7 @@
 
                 <!-- Edit Button -->
                 <button type="button" class="btn btn-icon btn-round btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-                    title="Sửa" onclick="location.href='@Url.Action("AddClass", "User")'">
+                    title="Sửa" onclick="location.href='@Url.Action("AddSet", "User")'">
                     <i class="fas fa-pencil-alt"></i>
                 </button>&nbsp;
 
@@ -194,10 +194,10 @@
         <br>
 
         <!-- Set Describe -->
-        <h5>@ViewData["Set.Describe"]</h5>
+        <h5>Mô tả ...</h5>
         <b>đã thêm vào thư mục
-            <a href="#">@ViewData["Folder.SetID.Name1"]</a>,
-            <a href="#">@ViewData["Folder.SetID.Name2"]</a>
+            <a href="#">Tiếng anh Basic</a>,
+            <a href="#">TA IT</a>
         </b>
         
         <!-- Card List -->
@@ -224,9 +224,9 @@
                                 <button type="button" class="btn btn-icon btn-link float-right float-right btncardfc">
                                     <i class="fas fa-pencil-alt text-white"></i>
                                 </button>
-                                <h1>@ViewData["Set.Card1.Term"]</h1>
+                                <h1>Hello</h1>
                                 <div class="pull-right">
-                                    <h3 class="fw-bold op-8">@ViewData["Set.Card1.Definition"]</h3>
+                                    <h3 class="fw-bold op-8">Xin chào</h3>
                                 </div>
                             </div>
                         </div>
@@ -239,9 +239,9 @@
                                 <button type="button" class="btn btn-icon btn-link float-right btncardfc">
                                     <i class="fas fa-pencil-alt text-white"></i>
                                 </button>
-                                <h1>@ViewData["Set.Card2.Term"]</h1>
+                                <h1>Goodbye</h1>
                                 <div class="pull-right">
-                                    <h3 class="fw-bold op-8">@ViewData["Set.Card2.Definition"]</h3>
+                                    <h3 class="fw-bold op-8">Tạm biệt</h3>
                                 </div>
                             </div>
                         </div>
@@ -254,9 +254,9 @@
                                 <button type="button" class="btn btn-icon btn-link float-right btncardfc">
                                     <i class="fas fa-pencil-alt text-white"></i>
                                 </button>
-                                <h1>@ViewData["Set.Card3.Term"]</h1>
+                                <h1>Apple</h1>
                                 <div class="pull-right">
-                                    <h3 class="fw-bold op-8">@ViewData["Set.Card3.Definition"]</h3>
+                                    <h3 class="fw-bold op-8">Quả táo</h3>
                                 </div>
                             </div>
                         </div>

@@ -32,6 +32,11 @@ namespace Application.Services
             return _folderRepository.GetAll().MappingDto();
         }
 
+        public int FolderCount(string id)
+        {
+            return _folderRepository.Count(id);
+        }
+
         public void CreateFolder(FolderDto FolderDto)
         {
             var folderToCreate = _folderRepository.GetBy(FolderDto.ID);

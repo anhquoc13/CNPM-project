@@ -10,10 +10,19 @@ namespace Infrastructure.Persistence
         public ClassRepository(FlashCardContext context) : base(context)
         {
         }
-
-        public Class GetBy(int id)
+        public int Count(string id)
         {
-            return Context.Class.FirstOrDefault(c => c.ID == id);
+            int count = 0;
+            var query = Context.Class.AsQueryable();
+            query = query.Where(m => m.IDuser == id);
+            foreach (var course in query)
+            {
+                if (course.IDuser == id)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }

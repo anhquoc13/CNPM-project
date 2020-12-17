@@ -5,11 +5,9 @@ namespace Application.DTO
 {
     public class VocalbularyDto : EntityBase
     {
-        [Required]
         public int ID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Biệt danh không được phép để trống")]
         public string define { get; set; }
-        [Required]
         public string explain { get; set; }
         public string image { get; set; }
     }

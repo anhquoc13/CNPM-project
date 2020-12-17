@@ -5,6 +5,6 @@ namespace Domain.Repositories
 {
     public interface IFolderRepository : IRepository<Folder>
     {
-        Folder GetBy(int id);
+        int Count(string id);
     }
 }

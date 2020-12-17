@@ -32,6 +32,11 @@ namespace Application.Services
             return _ClassRepository.GetAll().MappingDto();
         }
 
+        public int ClassCount(string id)
+        {
+            return _ClassRepository.Count(id);
+        }
+
         public void CreateClass(ClassDto ClassDto)
         {
             var ClassToCreate = _ClassRepository.GetBy(ClassDto.ID);

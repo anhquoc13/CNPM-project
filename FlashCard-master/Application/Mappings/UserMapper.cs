@@ -12,7 +12,9 @@ namespace Application.Mappings
             {
                 ID = user.ID,
                 tagname = user.tagname,
-                avatar = user.avatar
+                avatar = user.avatar,
+                email = user.email,
+                role = user.role
             };
         }
 
@@ -22,7 +24,9 @@ namespace Application.Mappings
             {
                 ID = userDto.ID,
                 tagname = userDto.tagname,
-                avatar = userDto.avatar
+                avatar = userDto.avatar,
+                email = userDto.email,
+                role = userDto.role
             };
         }
 
@@ -31,6 +35,8 @@ namespace Application.Mappings
             user.ID = userDto.ID;
             user.tagname = userDto.tagname;
             user.avatar = userDto.avatar;
+            user.email = userDto.email;
+            user.role = userDto.role;
         }
 
         public static IEnumerable<UserDto> MappingDto(this IEnumerable<User> users)

@@ -1,0 +1,64 @@
+@model Application.ViewModels.SetsViewModel
+
+<div class="page-inner">
+    <!-- Page Url  -->
+    <div class="page-header">
+        <h4 class="page-title">@ViewData["Page.Target"]</h4> <!-- Page Target Big -->
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                Trang
+            </li>
+            <li class="separator">
+                <i class="fas fa-angle-right"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">@ViewData["Page.Target"]</a> <!-- Page Target Small -->
+            </li>
+        </ul>
+    </div>
+
+    <!-- Page Content  -->
+	<div class="page-category">
+        <div class="card">            
+            <div class="card-body">
+                <div class="float-right" style="margin-right: 60px;">
+                    <h1 class="text-success">Đúng: <b class="text-danger" style="font-size: 3em;">0/3</b></h1>
+                    <h1 class="text-secondary">Điểm: <b class="text-danger" style="font-size: 3em;">0</b></h1>
+                </div>
+                
+                <h1><b>Kiểm tra: <a href="">Tiếng anh nhập môn</a></b></h1>
+                <h4>3 Câu hỏi tự luận</h4>
+                <br><br><br>
+
+                <form asp-action="TestOfSet" asp-controller="Sets" method="POST">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4 ml-4"></div>
+                <h5>1. Xin chào</h5>
+                <img src="\resources\images\sets\1\setImage_ID1_term1.png" alt="" width="300px" height="auto">
+                <input class="form-control" type="text" placeholder="Nhập đáp án...">
+                <br><br>
+
+                <h5>2. Tạm biệt</h5>
+                <img src="\resources\images\sets\1\setImage_ID1_term2.png" alt="" width="300px" height="auto">
+                <input class="form-control" type="text" placeholder="Nhập đáp án...">
+                <br><br>
+
+                <h5>3. Quả táo</h5>
+                <img src="\resources\images\sets\1\setImage_ID1_term3.png" alt="" width="300px" height="auto">
+                <input class="form-control" type="text" placeholder="Nhập đáp án...">
+                <br><br>
+                </form>
+
+                <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Xem đáp án</button>
+            </div>
+        </div>
+        
+	</div>
+</div>

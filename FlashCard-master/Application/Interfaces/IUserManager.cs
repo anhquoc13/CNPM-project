@@ -10,7 +10,6 @@ namespace Application.Interfaces
         void Create(User user);
         UserDto GetBy(string id);
         User GetBy(string id, string accessID);
-        UserDto GetOwner(string id);
         IEnumerable<UserDto> GetAll();
         IEnumerable<User> GetAll(string accessID, string sortOrder, string userRole, string searchString, int pageIndex, int pageSize, out int count);
         IEnumerable<string> GetRoles();

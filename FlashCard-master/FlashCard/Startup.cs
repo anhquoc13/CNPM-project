@@ -56,8 +56,14 @@ namespace Domain.Entities
         private void ConfigureScoped(IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IFolderRepository, FolderRepository>();
+            services.AddScoped<IClassRepository, ClassRepository>();
             services.AddScoped<IUserManager, UserManager>();
             services.AddScoped<ISignInManager, SignInManager>();
+            services.AddScoped<ICourseServices, CourseServices>();
+            services.AddScoped<IClassServices, ClassServices>();
+            services.AddScoped<IFolderServices, FolderServices>();
         }
     }
 }
