@@ -37,22 +37,22 @@
                     <b>Học</b>
                 </h5>
 
-                <a asp-action="Index" asp-route-id="1" class="btn button _btnleft">
+                <a asp-action="Index" asp-route-id="@Context.Request.RouteValues["id"]" class="btn button _btnleft">
                     <img src="\resources\images\svg_icons\card.svg" class="svg-setmenu">&emsp;
                     Thẻ ghi nhớ
                 </a><br>
                 
-                <a asp-action="TestOfSet" asp-route-id="1" class="btn button _btnleft">
+                <a asp-action="TestOfSet" asp-route-id="@Context.Request.RouteValues["id"]" class="btn button _btnleft">
                     <img src="\resources\images\svg_icons\play.svg" class="svg-setmenu">&emsp;
                     Học
                 </a><br>
 
-                <a asp-action="TestOfSet" asp-route-id="1" class="btn button _btnleft">
+                <a asp-action="TestOfSet" asp-route-id="@Context.Request.RouteValues["id"]" class="btn button _btnleft">
                     <img src="\resources\images\svg_icons\writing.svg" class="svg-setmenu">&emsp;
                     Viết
                 </a><br>
 
-                <a asp-action="TestOfSet" asp-route-id="1" class="btn button _btnleft">
+                <a asp-action="TestOfSet" asp-route-id="@Context.Request.RouteValues["id"]" class="btn button _btnleft">
                     <img src="\resources\images\svg_icons\book.svg" class="svg-setmenu">&emsp;
                     Kiểm tra
                 </a><br>
@@ -62,53 +62,24 @@
             <div class="col-6">
                 <div class="project">
                     <div class="noselect">
-                        <!-- Card 1  -->
-                        <div class="slides cardContainer inactivecard">
-                            <div class="cardfc">
-                                <div class="side front">
-                                    <div class="info">
-                                        <b>Hello</b>
+                        @foreach (var item in @Model.question)
+                        {
+                            <!-- Card 1  -->
+                            <div class="slides cardContainer inactivecard">
+                                <div class="cardfc">
+                                    <div class="side front">
+                                        <div class="info">
+                                            <b>@item.define</b>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="side back">
-                                    <div class="info">
-                                        <b>Xin chào</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 2  -->
-                        <div class="slides cardContainer inactivecard">
-                            <div class="cardfc">
-                                <div class="side front">
-                                    <div class="info">
-                                        <b>Goodbye</b>
-                                    </div>
-                                </div>
-                                <div class="side back">
-                                    <div class="info">
-                                        <b>Tạm biệt</b>
+                                    <div class="side back">
+                                        <div class="info">
+                                            <b>@item.explain</b>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <!-- Card 3  -->
-                        <div class="slides cardContainer inactivecard">
-                            <div class="cardfc">
-                                <div class="side front">
-                                    <div class="info">
-                                        <b>Apple</b>
-                                    </div>
-                                </div>
-                                <div class="side back">
-                                    <div class="info">
-                                        <b>Quả táo</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        }
 
                     </div>
 

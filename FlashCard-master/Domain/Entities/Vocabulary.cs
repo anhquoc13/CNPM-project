@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
-    public class Vocalbulary : EntityBase, IAggregateRoot
+    public class Vocabulary : EntityBase, IAggregateRoot
     {
         [Key]
         public int ID { get; set; }

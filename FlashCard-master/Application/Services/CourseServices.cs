@@ -32,6 +32,10 @@ namespace Application.Services
             return _courseRepository.GetAll().MappingDto();
         }
 
+        public IEnumerable<VocalbularyDto> GetVocalbulary(int id)
+        {
+            return _courseRepository.GetVocalbulary(id).MappingDto();
+        }
         public int CourseCount(string id)
         {
             return _courseRepository.Count(id);

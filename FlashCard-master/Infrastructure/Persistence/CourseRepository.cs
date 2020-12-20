@@ -24,5 +24,17 @@ namespace Infrastructure.Persistence
             }
             return count;
         }
+
+        public IEnumerable<Vocabulary> GetVocalbulary(int id)
+        {
+            var listVocabulary = Context.listVocabulary.AsQueryable();
+            listVocabulary = listVocabulary.Where(l => l.IDcourse == id);
+            List<Vocabulary> vocabulary = new List<Vocabulary>();
+            foreach (var item in listVocabulary)
+            {
+                vocabulary.Add(Context.Vocabulary.FirstOrDefault(v => v.ID == item.IDvocab));
+            }
+            return vocabulary;
+        }
     }
 }

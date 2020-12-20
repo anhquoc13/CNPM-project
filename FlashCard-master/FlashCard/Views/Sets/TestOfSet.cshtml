@@ -29,34 +29,71 @@
 	<div class="page-category">
         <div class="card">            
             <div class="card-body">
-                <div class="float-right" style="margin-right: 60px;">
-                    <h1 class="text-success">Đúng: <b class="text-danger" style="font-size: 3em;">0/3</b></h1>
-                    <h1 class="text-secondary">Điểm: <b class="text-danger" style="font-size: 3em;">0</b></h1>
-                </div>
-                
+                @if (@Model.IsFinish)
+                {
+                    <div class="float-right" style="margin-right: 60px;">
+                        <h1 class="text-success">Đúng: <b class="text-danger" style="font-size: 3em;">@Model.CorrectCount/@Model.QuestionCount</b></h1>
+                        <h1 class="text-secondary">Điểm: <b class="text-danger" style="font-size: 3em;">@Model.Point</b></h1>
+                    </div>
+                }
+
                 <h1><b>Kiểm tra: <a href="">Tiếng anh nhập môn</a></b></h1>
                 <h4>3 Câu hỏi tự luận</h4>
                 <br><br><br>
 
                 <form asp-action="TestOfSet" asp-controller="Sets" method="POST">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-4 ml-4"></div>
-                <h5>1. Xin chào</h5>
-                <img src="\resources\images\sets\1\setImage_ID1_term1.png" alt="" width="300px" height="auto">
-                <input class="form-control" type="text" placeholder="Nhập đáp án...">
-                <br><br>
-
-                <h5>2. Tạm biệt</h5>
-                <img src="\resources\images\sets\1\setImage_ID1_term2.png" alt="" width="300px" height="auto">
-                <input class="form-control" type="text" placeholder="Nhập đáp án...">
-                <br><br>
-
-                <h5>3. Quả táo</h5>
-                <img src="\resources\images\sets\1\setImage_ID1_term3.png" alt="" width="300px" height="auto">
-                <input class="form-control" type="text" placeholder="Nhập đáp án...">
-                <br><br>
+                @if (@Model.IsFinish)
+                {
+                    @foreach (var item in @Model.question)
+                    {
+                        <h5>@item.ID) @item.define</h5>
+                        <img src="@item.image" alt="" width="300px" height="auto">
+                        @if (@item.result == "true")
+                        {
+                            <div class="form-group has-success">
+                                <label for="successInput"><i class="fas fa-check"></i>&ensp;Đúng</label>
+                                <input type="text" id="successInput" class="form-control text-success" placeholder="@item.explain" disabled>
+                                <h5 class="text-muted">Câu trả lời:</h5><p>@item.explain</p>
+                            </div>
+                        }
+                        else if (@item.result == "false")
+                        {
+                            <div class="form-group has-error has-feedback">
+                                <label for="errorInput"><i class="fas fa-times"></i>&ensp;Sai</label>
+                                <input type="text" id="errorInput" class="form-control text-danger" placeholder="@item.explain" disabled>
+                                <h5 class="text-muted">Câu trả lời:</h5><p>@item.explain</p>
+                            </div>
+                        }
+                        else
+                        {
+                            <h1>có lỗi xảy ra trong quá trình xử lý</h1>
+                        }
+                        <br><br>
+                    }
+                }
+                else
+                {
+                    @foreach (var item in @Model.answer)
+                    {
+                        <h5>@item.ID) @item.define</h5>
+                        <img src="@item.image" alt="" width="300px" height="auto">
+                        <input asp-for="@item.explain" class="form-control" type="text" placeholder="Nhập đáp án...">
+                        <br><br>
+                    }
+                }
+                
+                @if (@Model.IsFinish)
+                {
+                    <button asp-action="TestOfSet" asp-route-id="@Context.Request.RouteValues["id"]" class="btn btn-success btn-lg btn-block mt-4">Kiểm tra lại</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Xem đáp án</button>
+                }
+                
                 </form>
 
-                <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Xem đáp án</button>
             </div>
         </div>
         

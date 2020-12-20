@@ -5,6 +5,7 @@ namespace Application.DTO
 {
     public class ListVocalbularyDto : EntityBase
     {
+        public int ID { get; set; }
         [Required]
         public int IDcourse { get; set; }
         [Required]
