@@ -29,12 +29,20 @@ namespace FlashCard.Controllers
 
         public IActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (ModelState.IsValid)
             {
                 if (_userManager.UserExists(model.id))
@@ -47,7 +55,7 @@ namespace FlashCard.Controllers
                     ModelState.AddModelError(string.Empty, "Mật khẩu không khớp");
                     return View();
                 }
-                var userToCreate = new UserDto() { ID = model.id, tagname = model.Tagname };
+                var userToCreate = new UserDto() { Id = model.id, ID = model.id, tagname = model.Tagname };
                 var user = _userManager.Register(userToCreate, model.Email, model.Password);
 
                 _signInManager.SignInAsync(user, isPersistent: false);
@@ -58,12 +66,20 @@ namespace FlashCard.Controllers
 
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (ModelState.IsValid)
             {
                 

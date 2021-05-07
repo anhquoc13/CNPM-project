@@ -1,6 +1,7 @@
 using Domain.Entities;
 using Application.DTO;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Application.ViewModels
 {
@@ -27,6 +28,9 @@ namespace Application.ViewModels
         public string userRole { get; set; }
         [Required(ErrorMessage = "Nhập tình trạng!")]
         public string userStatus { get; set; }
+        public List<SetsViewModel> setList { get; set; }
+        public List<FoldersViewModel> folderList { get; set; }
+        public List<ClassesViewModel> classList { get; set; }
 
     }
 }

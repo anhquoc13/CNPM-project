@@ -14,7 +14,7 @@ namespace Infrastructure.Persistence
         {
             int count = 0;
             var query = Context.Course.AsQueryable();
-            query = query.Where(m => m.IDuser == id);
+            query = query.Where(c => c.IDuser == id);
             foreach (var course in query)
             {
                 if (course.IDuser == id)
@@ -25,7 +25,7 @@ namespace Infrastructure.Persistence
             return count;
         }
 
-        public IEnumerable<Vocabulary> GetVocalbulary(int id)
+        public IEnumerable<Vocabulary> GetVocabulary(int id)
         {
             var listVocabulary = Context.listVocabulary.AsQueryable();
             listVocabulary = listVocabulary.Where(l => l.IDcourse == id);
@@ -35,6 +35,18 @@ namespace Infrastructure.Persistence
                 vocabulary.Add(Context.Vocabulary.FirstOrDefault(v => v.ID == item.IDvocab));
             }
             return vocabulary;
+        }
+
+        public int GetNewestID()
+        {
+            var query = Context.Course.AsQueryable();
+            return query.OrderByDescending(v => v.ID).FirstOrDefault().ID;
+        }
+
+        public IEnumerable<Course> GetCoureList(string userID)
+        {
+            var query = Context.Course.AsQueryable();
+            return query.Where(c => c.IDuser == userID);
         }
     }
 }

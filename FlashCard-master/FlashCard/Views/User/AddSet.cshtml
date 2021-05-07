@@ -1,150 +1,196 @@
-@model Application.ViewModels.UserViewModel 
+@model Application.ViewModels.SetsViewModel
 
-<div class="panel-header bg-white">
-    <div class="page-inner py-5">
-        <!-- Page Url  -->
-        <div class="page-header">
-            <h4 class="page-title">@ViewData["Page.Target"]</h4> <!-- Page Target Big -->
-            <ul class="breadcrumbs">
-                <li class="nav-home">
-                    <a href="#">
-                        <i class="fas fa-home"></i>
-                    </a>
-                </li>
-                <li class="separator">
-                    <i class="fas fa-angle-right"></i>
-                </li>
-                <li class="nav-item">
-                    Trang
-                </li>
-                <li class="separator">
-                    <i class="fas fa-angle-right"></i>
-                </li>
-                <li class="nav-item">
-                    <a href="#">@ViewData["Page.Target"]</a> <!-- Page Target Small -->
-                </li>
-            </ul>
-        </div>
-
-        <!-- Page Content -->
-        <div class="card-body" style="margin-top: -20px;">
-            <h1><b>Tạo học phần mới</b></h1>
-            <div class="row">
-                 <!-- input form -->
-                <div class="col-6">
-                    <div class="form-group form-floating-label">
-                        <input id="TitleSetLabel" type="text" class="form-control input-border-bottom" required="">
-                        <label for="TitleSetLabel" class="placeholder">
-                            <h4><b>Tiêu đề</b></h4>
-                        </label>
-                    </div><br>
-                    
-                    <div class="form-group form-floating-label">
-                        <input id="DescribeSetLabel" type="text" class="form-control input-border-bottom" required="">
-                        <label for="DescribeSetLabel" class="placeholder">
-                            <h4><b>Mô tả</b></h4>
-                        </label>
-                    </div>
-                </div>
-
-                 <!-- permission -->
-                <div class="col-4 ml-auto mr-3 text-left mt-1"><br>
-                    <h4><b>Hiển thị với mọi người</b></h4>
-                    <a href="#" class="text-success">Thay đổi</a>
-
-                    <br><br>
-
-                    <h4><b>Chỉ tôi có quyền sửa</b></h4>
-                    <a href="#" class="text-success">Thay đổi</a>
-                </div>
-
+<form asp-action="AddSet" asp-controller="User" method="POST">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-4 ml-4"></div>
+    <div class="panel-header bg-white">
+        <div class="page-inner py-5">
+            <!-- Page Url  -->
+            <div class="page-header">
+                <h4 class="page-title">@ViewData["Page.Target"]</h4> <!-- Page Target Big -->
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="fas fa-angle-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        Trang
+                    </li>
+                    <li class="separator">
+                        <i class="fas fa-angle-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">@ViewData["Page.Target"]</a> <!-- Page Target Small -->
+                    </li>
+                </ul>
             </div>
 
-        </div>
-    </div>
-</div>
-
-<div class="panel-header">
-    <div class="page-inner">
-
-            <div class="card">
-                <div class="card-header">
-                    <!-- Delete Card -->
-                    <button class="btn btn-danger float-right">
-                        <span class="btn-label">
-                            <i class="fas fa-trash"></i>
-                        </span>
-                    </button>
-
-                    <!-- Card Count -->
-                    <h2><b>1</b></h2>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col form-group form-floating-label">
-                            <input id="TermLabel" type="text" class="form-control input-border-bottom" required="">
-                            <label for="TermLabel" class="placeholder">
-                                <h4><b>Thuật ngữ</b></h4>
+            <!-- Page Content -->
+            <div class="card-body" style="margin-top: -20px;">
+                <h1><b>Tạo học phần mới</b></h1>
+                <div class="row">
+                    <!-- input form -->
+                    <div class="col-6">
+                        <div class="form-group form-floating-label">
+                            <input asp-for="Name" id="TitleSetLabel" type="text" class="form-control input-border-bottom" required="">
+                            <label for="TitleSetLabel" class="placeholder">
+                                <h4><b>Tiêu đề</b></h4>
                             </label>
                         </div><br>
-                        
-                        <div class="col form-group form-floating-label">
-                            <input id="DescribeTermLabel" type="text" class="form-control input-border-bottom" required="">
-                            <label for="DescribeTermLabel" class="placeholder">
-                                <h4><b>Định nghĩa</b></h4>
+
+                        <div class="form-group form-floating-label">
+                            <input asp-for="Describe" id="DescribeSetLabel" type="text" class="form-control input-border-bottom" required="">
+                            <label for="DescribeSetLabel" class="placeholder">
+                                <h4><b>Mô tả</b></h4>
                             </label>
                         </div>
                     </div>
+
+                    <!-- permission -->
+                    <div class="col-4 ml-auto mr-3 text-left mt-1">
+                        <br>
+                        <h4><b>Hiển thị với mọi người</b></h4>
+                        <a href="#" class="text-success">Thay đổi</a>
+
+                        <br><br>
+
+                        <h4><b>Chỉ tôi có quyền sửa</b></h4>
+                        <a href="#" class="text-success">Thay đổi</a>
+                    </div>
+
                 </div>
+
             </div>
+        </div>
+    </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <!-- Delete Card -->
-                    <button class="btn btn-danger float-right">
-                        <span class="btn-label">
-                            <i class="fas fa-trash"></i>
-                        </span>
-                    </button>
+    <div class="panel-header">
+        <div class="page-inner">
+            <div id="cardList">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Delete Card -->
+                        <button class="btn btn-danger float-right" onclick="removeRow(this)">
+                            <span class="btn-label">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                        </button>
 
-                    <!-- Card Count -->
-                    <h2><b>2</b></h2>
-                </div> 
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col form-group form-floating-label">
-                            <input id="TermLabel2" type="text" class="form-control input-border-bottom" required="">
-                            <label for="TermLabel2" class="placeholder">
-                                <h4><b>Thuật ngữ</b></h4>
-                            </label>
-                        </div><br>
-                        
-                        <div class="col form-group form-floating-label">
-                            <input id="DescribeTermLabel2" type="text" class="form-control input-border-bottom" required="">
-                            <label for="DescribeTermLabel2" class="placeholder">
-                                <h4><b>Định nghĩa</b></h4>
-                            </label>
+                        <!-- Card Count -->
+                        <h2><b>1</b></h2>
+                        <div class="row">
+                            <div class="col form-group form-floating-label">
+                                <input asp-for="Term[0]" id="TermLabel" type="text" class="form-control input-border-bottom" required="">
+                                <label for="TermLabel" class="placeholder">
+                                    <h4><b>Thuật ngữ</b></h4>
+                                </label>
+                            </div><br>
+
+                            <div class="col form-group form-floating-label">
+                                <input asp-for="DescribeTerm[0]" id="DescribeTermLabel" type="text" class="form-control input-border-bottom" required="">
+                                <label for="DescribeTermLabel" class="placeholder">
+                                    <h4><b>Định nghĩa</b></h4>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Delete Card -->
+                        <button class="btn btn-danger float-right" onclick="removeRow(this)">
+                            <span class="btn-label">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                        </button>
+
+                        <!-- Card Count -->
+                        <h2><b>2</b></h2>
+                        <div class="row">
+                            <div class="col form-group form-floating-label">
+                                <input asp-for="Term[1]" id="TermLabel2" type="text" class="form-control input-border-bottom" required="">
+                                <label for="TermLabel2" class="placeholder">
+                                    <h4><b>Thuật ngữ</b></h4>
+                                </label>
+                            </div><br>
+
+                            <div class="col form-group form-floating-label">
+                                <input asp-for="DescribeTerm[1]" id="DescribeTermLabel2" type="text" class="form-control input-border-bottom" required="">
+                                <label for="DescribeTermLabel2" class="placeholder">
+                                    <h4><b>Định nghĩa</b></h4>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Add Card -->
-            <div class="card">               
+            <div class="card">
                 <div class="card-body">
-                    <a href="#" class="text-success text-center" style="text-decoration: none;">
+                    <a onclick="addRow()" id="btnAdd" class="text-success text-center" style="text-decoration: none;cursor: pointer;">
                         <h1><b>Thêm thẻ</b></h1>
                     </a>
                 </div>
             </div>
 
+            <script type="text/javascript">
+                var cardID = 3;
+                var list = document.getElementById('cardList');
+                function addRow() {
+                    document.querySelector('#cardList').insertAdjacentHTML(
+                        'beforeend',
+                        `<div class="card" id="` + cardID + `">
+                            <div class="card-body">
+                                <!-- Delete Card -->
+                                <button class="btn btn-danger float-right" onclick="removeRow(`+ cardID + `)">
+                                    <span class="btn-label">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                </button>
+
+                                <!-- Card Count -->
+                                <h2><b>`+ cardID + `</b></h2>
+                                <div class="row">
+                                    <div class="col form-group form-floating-label">
+                                        <input id="TermLabel" type="text" class="form-control input-border-bottom" required="" name="Term[` + (cardID - 1) + `]" value="">                                        
+                                        <label for="TermLabel" class="placeholder">
+                                            <h4><b>Thuật ngữ</b></h4>
+                                        </label>
+                                    </div><br>
+
+                                    <div class="col form-group form-floating-label">
+                                        <input id="DescribeTermLabel" type="text" class="form-control input-border-bottom" required="" name="DescribeTerm[` + (cardID - 1) + `]" value="">                                        
+                                        <label for="DescribeTermLabel" class="placeholder">
+                                            <h4><b>Định nghĩa</b></h4>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+                    )
+                    cardID++;
+                }
+
+                function removeName(itemid) {
+                    var item = document.getElementById(itemid);
+                    list.removeChild(item);
+                }
+            </script>
+
             <!-- Submit button -->
-            <button class="btn btn-info btn-lg float-right mb-5"
-            style=" padding: 1.5rem 5rem;
+            <button type="submit"
+                    class="btn btn-info btn-lg float-right mb-5"
+                    style=" padding: 1.5rem 5rem;
                     font-weight: 700;
                     font-size: 1.125rem;">
                 Tạo
             </button>
 
+        </div>
     </div>
-</div>
+</form>

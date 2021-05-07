@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Application.Interfaces;
 using Application.ViewModels;
 using Application.DTO;
+using System;
 
 namespace LearningWeb.Controllers
 {
@@ -22,13 +23,65 @@ namespace LearningWeb.Controllers
             {
                 return RedirectToAction("Index", "Intro");
             }
-            SetsViewModel model = new SetsViewModel();
+            TestOfSetsViewModel model = new TestOfSetsViewModel();
             model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
-            model.question = _courseServices.GetVocalbulary(id);
-
-            ViewData["Page.Title"]="Tiếng anh nhập môn";
+            model.course = _courseServices.GetBy(id);
+            model.question = _courseServices.GetVocabulary(id);
+            
+            ViewData["Page.Title"]= model.name;
             ViewData["Page.Target"]="Học phần";
             return View(model);
+        }
+
+        public IActionResult LearnOfSet(int id)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Intro");
+            }
+            TestOfSetsViewModel model = new TestOfSetsViewModel();
+            model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
+            model.name = _courseServices.GetBy(id).name;
+            model.question = _courseServices.GetVocabulary(id);
+
+            ViewData["Page.Title"] = "Ôn tập học phần";
+            ViewData["Page.Target"] = "Ôn tập";
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult LearnOfSet(int id, TestOfSetsViewModel model)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Intro");
+            }
+            if (model.answer == null)
+            {
+                return RedirectToAction("TestOfSet", "Sets");
+            }
+            TestOfSetsViewModel result = new TestOfSetsViewModel();
+            result.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
+            result.name = model.name;
+            result.question = _courseServices.GetVocabulary(id);
+            result.result = new List<bool>();
+            foreach (var q in result.question)
+                result.result.Add(false);
+            result.IsFinish = true;
+            result.CorrectCount = 0;
+            result.answer = model.answer;
+            for (int i = 0; i < result.question.Count(); i++)
+            {
+                if (model.answer[i] == result.question.ElementAt(i).explain)
+                {
+                    result.result[i] = true;
+                    result.CorrectCount++;
+                }
+                else result.result[i] = false;
+            }
+            ViewData["Page.Title"] = "Ôn tập học phần";
+            ViewData["Page.Target"] = "Ôn tập";
+            return View(result);
         }
 
         public IActionResult TestOfSet(int id)
@@ -37,14 +90,10 @@ namespace LearningWeb.Controllers
             {
                 return RedirectToAction("Index", "Intro");
             }
-            SetsViewModel model = new SetsViewModel();
+            TestOfSetsViewModel model = new TestOfSetsViewModel();
             model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
-            model.question = _courseServices.GetVocalbulary(id);
-            model.answer = model.question;
-            foreach (var answer in model.answer)
-            {
-                answer.explain = "Nhập đáp án ...";
-            }
+            model.name = _courseServices.GetBy(id).name;
+            model.question = _courseServices.GetVocabulary(id);
 
             ViewData["Page.Title"]="Kiểm tra học phần";
             ViewData["Page.Target"]="Kiểm tra";
@@ -52,30 +101,37 @@ namespace LearningWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult TestOfSet(int id, SetsViewModel model)
+        public IActionResult TestOfSet(int id, TestOfSetsViewModel model)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Intro");
             }
-            SetsViewModel result = new SetsViewModel();
+            if (model.answer == null)
+            {
+                return RedirectToAction("TestOfSet", "Sets");
+            }
+            TestOfSetsViewModel result = new TestOfSetsViewModel();
             result.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
-            result.question = _courseServices.GetVocalbulary(id);
-            result.answer = model.answer;
+            result.name = model.name;
+            result.question = _courseServices.GetVocabulary(id);
+            result.result = new List<bool>();
+            foreach(var q in result.question)
+                result.result.Add(false);
             result.IsFinish = true;
             result.CorrectCount = 0;
-            result.QuestionCount = 0;
-            foreach (var question in result.question)
+            result.answer = model.answer;
+            result.QuestionCount = result.question.Count();
+            for(int i = 0; i < result.question.Count(); i++)
             {
-                if (model.answer.FirstOrDefault(a => a.ID == question.ID).explain == question.explain)
+                if(model.answer[i] == result.question.ElementAt(i).explain)
                 {
-                    question.result = "true";
+                    result.result[i] = true;
                     result.CorrectCount++;
                 }
-                else question.result = "false";
-                result.QuestionCount++;
+                else result.result[i] = false;
             }
-            result.Point = result.CorrectCount/result.QuestionCount;
+            result.Point = (float) (result.CorrectCount/result.QuestionCount)*10;
             ViewData["Page.Title"]="Kiểm tra học phần";
             ViewData["Page.Target"]="Kiểm tra";
             return View(result);

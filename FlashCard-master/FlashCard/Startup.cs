@@ -59,11 +59,14 @@ namespace Domain.Entities
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IFolderRepository, FolderRepository>();
             services.AddScoped<IClassRepository, ClassRepository>();
+            services.AddScoped<IVocabularyRepository, VocabularyRepository>();
+            services.AddScoped<IListVocabularyRepository, ListVocabularyRepository>();
             services.AddScoped<IUserManager, UserManager>();
             services.AddScoped<ISignInManager, SignInManager>();
             services.AddScoped<ICourseServices, CourseServices>();
             services.AddScoped<IClassServices, ClassServices>();
             services.AddScoped<IFolderServices, FolderServices>();
+            services.AddScoped<IVocabularyServices, VocabularyServices>();
         }
     }
 }

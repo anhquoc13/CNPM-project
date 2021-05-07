@@ -16,9 +16,9 @@ namespace Application.Services
             _userRepository = userRepository;
         }
 
-        public User Register(UserDto temp, string email, string password)
+        public User Register(UserDto userDto, string email, string password)
         {
-            User user = temp.MappingUser();
+            User user = userDto.MappingUser();
             user.email = email;
             user.passwd = password;
             user.createdDay = System.DateTime.Today.ToString("dd-MM-yyyy");

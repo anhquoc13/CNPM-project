@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Application.DTO
 {
-    public class ListVocalbularyDto : EntityBase
+    public class ListVocabularyDto : EntityBase
     {
         public int ID { get; set; }
         [Required]

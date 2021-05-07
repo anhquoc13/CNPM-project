@@ -3,21 +3,25 @@ using Application.Interfaces;
 using Application.ViewModels;
 using Application.DTO;
 using Domain.Entities;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace LearningWeb.Controllers
 {
     public class UserController : Controller
     {
         private readonly IUserManager _userManager;
+        private readonly IVocabularyServices _vocabularyServices;
         private readonly ICourseServices _courseServices;
         private readonly IFolderServices _folderServices;
         private readonly IClassServices _classServices;
-        public UserController(IUserManager userManager, ICourseServices courseServices, IFolderServices folderServices, IClassServices classServices)
+        public UserController(IUserManager userManager, ICourseServices courseServices, IFolderServices folderServices, IClassServices classServices, IVocabularyServices vocabularyServices)
         {
             _userManager = userManager;
             _courseServices = courseServices;
             _folderServices = folderServices;
             _classServices = classServices;
+            _vocabularyServices = vocabularyServices;
         }
         public IActionResult Index()
         {
@@ -116,6 +120,17 @@ namespace LearningWeb.Controllers
             model.owner.FolderCount = _folderServices.FolderCount(id);
             model.owner.ClassCount = _classServices.ClassCount(id);
 
+            model.setList = new List<SetsViewModel>();
+            foreach(var course in _courseServices.GetCoureList(id))
+            {
+                SetsViewModel temp = new SetsViewModel();
+                temp.ID = course.ID;
+                temp.Name = course.name;
+                temp.count = _courseServices.GetVocabulary(course.ID).Count();
+
+                model.setList.Add(temp);
+            }
+
             ViewData["Page.Title"]=model.user.ID;
             ViewData["Page.Target"]="Học phần";
             return View(model);
@@ -171,12 +186,38 @@ namespace LearningWeb.Controllers
             {
                 return RedirectToAction("Index", "Intro");
             }
-            UserViewModel model = new UserViewModel();
+            SetsViewModel model = new SetsViewModel();
             model.user = _userManager.GetBy(User.Identity.Name, User.Identity.Name);
 
             ViewData["Page.Title"]=model.user.ID;
             ViewData["Page.Target"]="Tạo học phần";
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddSet(SetsViewModel model)
+        {
+            var courseToCreate = new CourseDto()
+            {
+                IDuser = _userManager.GetBy(User.Identity.Name, User.Identity.Name).ID,
+                name = model.Name,
+                describe = model.Describe,
+                link = ""
+            };
+            _courseServices.CreateCourse(courseToCreate);
+
+            for(int i = 0; i < model.Term.Count(); i++)
+            {
+                VocabularyDto vocabularyToCreate = new VocabularyDto()
+                {
+                    define = model.Term.ElementAt(i),
+                    explain = model.DescribeTerm.ElementAt(i),
+                    image = ""
+                };
+                _vocabularyServices.CreateVocabulary(vocabularyToCreate);
+                _vocabularyServices.CreateListVocabulary(_courseServices.GetNewestID(), _vocabularyServices.GetNewestID());
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult AddClass()

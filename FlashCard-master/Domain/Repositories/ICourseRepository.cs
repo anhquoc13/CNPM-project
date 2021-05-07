@@ -6,6 +6,8 @@ namespace Domain.Repositories
     public interface ICourseRepository : IRepository<Course>
     {
         int Count(string id);
-        IEnumerable<Vocabulary> GetVocalbulary(int id);
+        int GetNewestID();
+        IEnumerable<Vocabulary> GetVocabulary(int id);
+        IEnumerable<Course> GetCoureList(string userID);
     }
 }

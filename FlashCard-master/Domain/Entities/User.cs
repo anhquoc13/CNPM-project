@@ -6,6 +6,7 @@ namespace Domain.Entities
     public class User : EntityBase, IAggregateRoot
     {
         [Key]
+        public string Id { get; set; }
         public string ID { get; set; }
         public string tagname { get; set; }
         public string email { get; set; }

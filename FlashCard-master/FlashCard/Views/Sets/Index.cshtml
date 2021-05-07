@@ -26,7 +26,7 @@
     <!-- Page Content  -->
 	<div class="page-category">
         <!-- Set Title  -->
-        <h1><b>Tiếng anh nhập môn</b></h1>
+        <h1><b>@Model.course.name</b></h1>
 
         <br>
 
@@ -42,12 +42,12 @@
                     Thẻ ghi nhớ
                 </a><br>
                 
-                <a asp-action="TestOfSet" asp-route-id="@Context.Request.RouteValues["id"]" class="btn button _btnleft">
+                <a asp-action="LearnOfSet" asp-route-id="@Context.Request.RouteValues["id"]" class="btn button _btnleft">
                     <img src="\resources\images\svg_icons\play.svg" class="svg-setmenu">&emsp;
                     Học
                 </a><br>
 
-                <a asp-action="TestOfSet" asp-route-id="@Context.Request.RouteValues["id"]" class="btn button _btnleft">
+                <a asp-action="LearnOfSet" asp-route-id="@Context.Request.RouteValues["id"]" class="btn button _btnleft">
                     <img src="\resources\images\svg_icons\writing.svg" class="svg-setmenu">&emsp;
                     Viết
                 </a><br>
@@ -62,8 +62,10 @@
             <div class="col-6">
                 <div class="project">
                     <div class="noselect">
-                        @foreach (var item in @Model.question)
-                        {
+                        @{var count = 0;
+                            foreach (var item in @Model.question)
+                            {
+                                count++;
                             <!-- Card 1  -->
                             <div class="slides cardContainer inactivecard">
                                 <div class="cardfc">
@@ -79,7 +81,8 @@
                                     </div>
                                 </div>
                             </div>
-                        }
+                            } 
+                         }
 
                     </div>
 
@@ -165,7 +168,7 @@
         <br>
 
         <!-- Set Describe -->
-        <h5>Mô tả ...</h5>
+        <h5>@Model.course.describe</h5>
         <b>đã thêm vào thư mục
             <a href="#">Tiếng anh Basic</a>,
             <a href="#">TA IT</a>
@@ -183,56 +186,28 @@
                 </a>
 
                 <!-- Card List Title -->
-                <h2><b>Thuật ngữ trong học phần này (3)</b></h2>
+                <h2><b>Thuật ngữ trong học phần này (@count)</b></h2>
             </div>
             
             <div class="card-body">
                 <div class="row">
-                    <!-- Card 1 -->
-                    <div class="col-md-6">
-                        <div class="card card-dark bg-primary-gradient">
-                            <div class="card-body bubble-shadow">
-                                <button type="button" class="btn btn-icon btn-link float-right float-right btncardfc">
-                                    <i class="fas fa-pencil-alt text-white"></i>
-                                </button>
-                                <h1>Hello</h1>
-                                <div class="pull-right">
-                                    <h3 class="fw-bold op-8">Xin chào</h3>
+                    @foreach (var item in @Model.question)
+                    {
+                        <!-- Card 1 -->
+                        <div class="col-md-6">
+                            <div class="card card-dark bg-primary-gradient">
+                                <div class="card-body bubble-shadow">
+                                    <button type="button" class="btn btn-icon btn-link float-right float-right btncardfc">
+                                        <i class="fas fa-pencil-alt text-white"></i>
+                                    </button>
+                                    <h1>@item.define</h1>
+                                    <div class="pull-right">
+                                        <h3 class="fw-bold op-8">@item.explain</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="col-md-6">
-                        <div class="card card-dark bg-primary-gradient">
-                            <div class="card-body bubble-shadow">
-                                <button type="button" class="btn btn-icon btn-link float-right btncardfc">
-                                    <i class="fas fa-pencil-alt text-white"></i>
-                                </button>
-                                <h1>Goodbye</h1>
-                                <div class="pull-right">
-                                    <h3 class="fw-bold op-8">Tạm biệt</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="col-md-6">
-                        <div class="card card-dark bg-primary-gradient">
-                            <div class="card-body bubble-shadow">
-                                <button type="button" class="btn btn-icon btn-link float-right btncardfc">
-                                    <i class="fas fa-pencil-alt text-white"></i>
-                                </button>
-                                <h1>Apple</h1>
-                                <div class="pull-right">
-                                    <h3 class="fw-bold op-8">Quả táo</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    }
                 </div>
             </div>
 

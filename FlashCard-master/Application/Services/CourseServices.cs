@@ -32,10 +32,21 @@ namespace Application.Services
             return _courseRepository.GetAll().MappingDto();
         }
 
-        public IEnumerable<VocalbularyDto> GetVocalbulary(int id)
+        public IEnumerable<VocabularyDto> GetVocabulary(int id)
         {
-            return _courseRepository.GetVocalbulary(id).MappingDto();
+            return _courseRepository.GetVocabulary(id).MappingDto();
         }
+
+        public IEnumerable<CourseDto> GetCoureList(string userID)
+        {
+            return _courseRepository.GetCoureList(userID).MappingDto();
+        }
+
+        public int GetNewestID()
+        {
+            return _courseRepository.GetNewestID();
+        }
+
         public int CourseCount(string id)
         {
             return _courseRepository.Count(id);
@@ -43,13 +54,13 @@ namespace Application.Services
 
         public void CreateCourse(CourseDto CourseDto)
         {
-            var courseToCreate = _courseRepository.GetBy(CourseDto.ID);
+            var courseToCreate = CourseMapper.MappingCourse(CourseDto);
             _courseRepository.Add(courseToCreate);
         }
 
         public void UpdateCourse(CourseDto CourseDto)
         {
-            var courseToUpdate = _courseRepository.GetBy(CourseDto.ID);
+            var courseToUpdate = CourseMapper.MappingCourse(CourseDto);
             _courseRepository.Update(courseToUpdate);
         }
 

@@ -12,36 +12,33 @@
     <div class="page-category">
         <!-- Recent  -->
         <div class="col-md-12">
-            <h3><b>Gần nhất</b><hr style="float: right; width: 47vw; border-bottom: 1px solid black;"/></h3>
-            <!-- Set 1 -->
-            <div class="card cardHoverLine card-stats card-round">
-                <div class="card-body">
-                    <div class="card-category">
-                        3 thuật ngữ
-                    </div>
-                    <a asp-controller="Sets" asp-action="Index" asp-route-id="1" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>Tiếng anh nhập môn</b>
-                    </a>
-                    &emsp;
-                    <i class="card-category far fa-image"></i>
-                    <i class="card-category fas fa-lock"></i>
-                </div>
-            </div>
-            
-            <!-- Set 2 -->
-            <div class="card cardHoverLine card-stats card-round">
-                <div class="card-body">
-                    <div class="card-category">
-                        8 thuật ngữ
-                    </div>
-                    <a asp-controller="Sets" asp-action="Index" asp-route-id="2" class="card-title text-uppercase" style="text-decoration: none;">
-                        <b>Tiếng trung cơ bản</b>
-                    </a>
-                    &emsp;
-                    <i class="card-category far fa-image"></i>
-                    <i class="card-category fas fa-lock"></i>
-                </div>
-            </div>
+            @{ if (@Model.setList.Count() > 0)
+                {
+                    <h3><b>Gần nhất</b><hr style="float: right; width: 47vw; border-bottom: 1px solid black;" /></h3>
+                    @foreach (var item in @Model.setList)
+                    {
+                        <!-- Set -->
+                        <div class="card cardHoverLine card-stats card-round">
+                            <div class="card-body">
+                                <div class="card-category">
+                                    @item.count thuật ngữ
+                                </div>
+                                <a asp-controller="Sets" asp-action="Index" asp-route-id="@item.ID" class="card-title text-uppercase" style="text-decoration: none;">
+                                    <b>@item.Name</b>
+                                </a>
+                                &emsp;
+                                <i class="card-category far fa-image"></i>
+                                <i class="card-category fas fa-lock"></i>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h2>Người dùng này chưa có bất kỳ học phần nào !</h2>
+                }
+            }
 
-    </div>
+
+        </div>
 </div>

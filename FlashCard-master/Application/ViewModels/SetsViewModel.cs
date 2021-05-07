@@ -1,4 +1,4 @@
-using Application.DTO;
+﻿using Application.DTO;
 using Domain.Entities;
 using System.Collections.Generic;
 
@@ -8,11 +8,11 @@ namespace Application.ViewModels
     {
         public int ID { get; set; }
         public User user { get; set; }
-        public IEnumerable<VocalbularyDto> question { get; set; }
-        public IEnumerable<VocalbularyDto> answer { get; set; }
-        public bool IsFinish { get; set; }
-        public int CorrectCount { get; set; }
-        public int QuestionCount { get; set; }
-        public float Point { get; set; }
+        public string Name { get; set; }
+        public string Describe { get; set; }
+        public string Image { get; set; }
+        public int count { get; set; }
+        public List<string> Term { get; set; }
+        public List<string> DescribeTerm { get; set; }
     }
 }
